@@ -11,9 +11,14 @@ function RoadmapSection({ section, index }) {
           )}
         </h2>
       </div>
+
       <ul className="section-items">
         {section.items.map((item, i) => (
-          <li key={i}>{item}</li>
+          <li key={i}>
+            <a href={item.link} className="topic-link">
+              {item.text}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
@@ -23,21 +28,28 @@ function RoadmapSection({ section, index }) {
 function App() {
   const [query, setQuery] = useState("");
 
-  const filtered = roadmapData.map((section) => {
-    if (!query.trim()) return section;
-    const q = query.toLowerCase();
-    const matchedItems = section.items.filter((item) =>
-      item.toLowerCase().includes(q)
-    );
-    if (
-      section.title.toLowerCase().includes(q) ||
-      (section.badge && section.badge.toLowerCase().includes(q))
-    ) {
-      return section;
-    }
-    if (matchedItems.length === 0) return null;
-    return { ...section, items: matchedItems };
-  }).filter(Boolean);
+  const filtered = roadmapData
+    .map((section) => {
+      if (!query.trim()) return section;
+
+      const q = query.toLowerCase();
+
+      const matchedItems = section.items.filter((item) =>
+        item.text.toLowerCase().includes(q)
+      );
+
+      if (
+        section.title.toLowerCase().includes(q) ||
+        (section.badge && section.badge.toLowerCase().includes(q))
+      ) {
+        return section;
+      }
+
+      if (matchedItems.length === 0) return null;
+
+      return { ...section, items: matchedItems };
+    })
+    .filter(Boolean);
 
   return (
     <>
