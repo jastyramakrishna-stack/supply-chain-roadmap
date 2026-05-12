@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #0b1020;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at top, #1b2a4a 0, #0b1020 55%);
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  color: #c0c4d8;
+  font-size: 0.98rem;
+}
+
+.footer {
+  padding: 1.5rem 0 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #8b90a5;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Roadmap layout */
+
+.roadmap {
+  margin: 2rem 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section-card {
+  background: linear-gradient(135deg, #151a2b, #101524);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #fdfdfd;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 255, 163, 0.08);
+  color: #00ffb3;
+  margin-left: 0.5rem;
+}
+
+.section-items {
+  list-style: none;
+}
+
+.section-items li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+  color: #d4d7ea;
+}
+
+.section-items li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ffb3;
+  font-size: 1rem;
+}
+
+/* Tagline / meta */
+
+.meta {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #9ba0bd;
+}
+
+@media (min-width: 768px) {
+  .roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
