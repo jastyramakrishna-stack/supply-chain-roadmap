@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <title>Supply Chain Roadmap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font preconnects for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Unsplash image preload for hero (fastest perceived load) -->
+  <link rel="preload" as="image"
+    href="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=75&auto=format" />
+
   <link rel="stylesheet" href="./styles.css" />
+
   <!-- React & Babel CDN -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-
 <body>
+
   <header class="header">
     <div class="container">
       <h1>Supply Chain Roadmap</h1>
@@ -32,6 +41,6 @@
 
   <script src="./data.js"></script>
   <script type="text/babel" src="./app.jsx"></script>
-</body>
 
+</body>
 </html>
