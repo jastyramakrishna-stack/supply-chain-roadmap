@@ -4,8 +4,25 @@ const { useState, useEffect, useRef } = React;
 const GEMINI_KEY = "AIzaSyB7hVVnWcbzXWDKui3INCN28OPhLpqVTpI";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_KEY}`;
 
+// ── In-memory cache — avoids repeat API calls for same content ─
+const aiCache = {};
+
 // ── Shared Gemini fetch helper ────────────────────────────────
 function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
+  // Return cached response instantly if available
+  if (aiCache[prompt]) {
+    const text = aiCache[prompt];
+    let i = 0;
+    function tickCached() {
+      if (i < text.length) {
+        onChunk(text.slice(i, i + 6));
+        i += 6;
+        setTimeout(tickCached, 10);
+      } else { onDone(); }
+    }
+    tickCached();
+    return;
+  }
   fetch(GEMINI_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -28,6 +45,7 @@ function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
     if (!data) return;
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     if (!text) throw new Error("Empty response from Gemini");
+    aiCache[prompt] = text; // cache for this session
     let i = 0;
     function tick() {
       if (i < text.length) {
