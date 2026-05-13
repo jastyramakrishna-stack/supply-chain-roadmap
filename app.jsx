@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React;
 
 // ── Gemini API config ─────────────────────────────────────────
 const GEMINI_KEY = "AIzaSyB7hVVnWcbzXWDKui3INCN28OPhLpqVTpI";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
 // ── Shared Gemini fetch helper ────────────────────────────────
 function fetchAI(prompt, onChunk, onDone, onError) {
