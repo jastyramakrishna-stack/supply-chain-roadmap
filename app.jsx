@@ -1,66 +1,5 @@
 const { useState, useEffect, useRef } = React;
 
-// ── Gemini API config ─────────────────────────────────────────
-const GEMINI_KEY = "AIzaSyB7hVVnWcbzXWDKui3INCN28OPhLpqVTpI";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_KEY}`;
-
-// ── In-memory cache — avoids repeat API calls for same content ─
-const aiCache = {};
-
-// ── Shared Gemini fetch helper ────────────────────────────────
-function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
-  // Return cached response instantly if available
-  if (aiCache[prompt]) {
-    const text = aiCache[prompt];
-    let i = 0;
-    function tickCached() {
-      if (i < text.length) {
-        onChunk(text.slice(i, i + 6));
-        i += 6;
-        setTimeout(tickCached, 10);
-      } else { onDone(); }
-    }
-    tickCached();
-    return;
-  }
-  fetch(GEMINI_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { maxOutputTokens: 1000, temperature: 0.7 }
-    })
-  })
-  .then(res => {
-    if (res.status === 429 && attempt <= 3) {
-      const delay = attempt * 2000;
-      console.warn(`Rate limited. Retrying in ${delay}ms (attempt ${attempt}/3)...`);
-      setTimeout(() => fetchAI(prompt, onChunk, onDone, onError, attempt + 1), delay);
-      return null;
-    }
-    if (!res.ok) throw new Error(`Gemini API error: ${res.status}`);
-    return res.json();
-  })
-  .then(data => {
-    if (!data) return;
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-    if (!text) throw new Error("Empty response from Gemini");
-    aiCache[prompt] = text; // cache for this session
-    let i = 0;
-    function tick() {
-      if (i < text.length) {
-        onChunk(text.slice(i, i + 6));
-        i += 6;
-        setTimeout(tick, 10);
-      } else {
-        onDone();
-      }
-    }
-    tick();
-  })
-  .catch(onError);
-}
-
 // ── Shared markdown renderer ──────────────────────────────────
 function renderMarkdown(text) {
   if (!text) return "";
@@ -91,53 +30,12 @@ function badgeClass(badge) {
 }
 
 // ── Topic Drawer (second panel) ───────────────────────────────
-function TopicDrawer({ topic, sectionTitle, onClose }) {
-  const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function TopicDrawer({ topic, sectionTitle, topicContent, onClose }) {
   const contentRef = useRef(null);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = contentRef.current.scrollHeight;
-    }
-  }, [content]);
-
-  useEffect(() => {
-    if (!topic) return;
-    setContent(""); setLoading(true); setError(null);
-
-    const prompt = `You are an expert supply chain educator. Explain this specific supply chain topic: "${topic}" which belongs to the section: "${sectionTitle}".
-
-Structure your response with these markdown sections:
-## What is it?
-Clear concise definition (2-3 sentences).
-
-## How it works
-Key mechanics or process explained simply (3-4 sentences).
-
-## Key Concepts
-Bullet list of 4-6 core concepts, formulas, or frameworks.
-
-## Real-World Example
-A specific named example with company name, numbers, and outcome (3-5 sentences). Make it concrete and memorable.
-
-## Key Takeaway
-One powerful sentence summarising why this matters in practice.
-
-Be specific and practical. Use real companies and real numbers where possible.`;
-
-    fetchAI(
-      prompt,
-      (chunk) => setContent(prev => prev + chunk),
-      () => setLoading(false),
-      (err) => {
-        setError("Unable to load explanation. Please try again in a moment.");
-        setLoading(false);
-        console.error(err);
-      }
-    );
-  }, [topic]);
+  // Fallback if no hardcoded content for this topic
+  const text = topicContent ||
+    `## ${topic}\nDetailed content for this topic is coming soon.\n\n## How it relates to ${sectionTitle}\nThis topic is a key component of ${sectionTitle} in modern supply chain management.`;
 
   return (
     <aside className="topic-drawer-panel" role="dialog" aria-modal="true" aria-label={`${topic} detail`}>
@@ -151,21 +49,11 @@ Be specific and practical. Use real companies and real numbers where possible.`;
       </div>
 
       <div className="drawer-content" ref={contentRef}>
-        {loading && !content && (
-          <div className="drawer-loading">
-            <span className="drawer-spinner" />
-            <span>Generating explanation…</span>
-          </div>
-        )}
-        {error && <p className="drawer-error">{error}</p>}
-        {content && (
-          <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }} />
-        )}
-        {loading && content && <span className="drawer-cursor">▌</span>}
+        <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }} />
       </div>
 
       <div className="drawer-footer">
-        <span className="drawer-ai-label">✦ Gemini AI · Supply Chain Roadmap</span>
+        <span className="drawer-ai-label">✦ Supply Chain Roadmap</span>
         <button className="drawer-close-btn" onClick={onClose}>← Section</button>
       </div>
     </aside>
@@ -174,56 +62,26 @@ Be specific and practical. Use real companies and real numbers where possible.`;
 
 // ── Section Drawer (first panel) ──────────────────────────────
 function SectionDrawer({ section, onClose }) {
-  const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [activeTopic, setActiveTopic] = useState(null);
-  const contentRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
+  // Close topic on Escape
   useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = contentRef.current.scrollHeight;
-    }
-  }, [content]);
+    const handler = e => { if (e.key === "Escape") activeTopic ? setActiveTopic(null) : onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [activeTopic]);
 
-  useEffect(() => {
-    if (!section) return;
-    setContent(""); setLoading(true); setError(null); setActiveTopic(null);
+  const overviewText = section.content?.overview ||
+    `## ${section.title}\nThis section covers key supply chain concepts and best practices.\n\n## Topics covered\n${section.items.map(i => `- ${i}`).join('\n')}`;
 
-    const prompt = `You are an expert supply chain educator. Give a concise overview of this supply chain section: "${section.title}".
-
-Structure your response with these markdown sections:
-## What is it?
-Clear concise definition (2-3 sentences).
-
-## Why it matters
-Business impact and strategic importance (2-3 sentences).
-
-## Key Concepts
-Bullet list of 4-5 core concepts in this section.
-
-## Key Metrics / KPIs
-Bullet list of 3-4 metrics used to measure success here.
-
-Topics covered: ${section.items.join(", ")}.
-Be concise — this is an overview. Users click topic pills for deep-dives.`;
-
-    fetchAI(
-      prompt,
-      (chunk) => setContent(prev => prev + chunk),
-      () => setLoading(false),
-      (err) => {
-        setError("Unable to load explanation. Please try again in a moment.");
-        setLoading(false);
-        console.error(err);
-      }
-    );
-  }, [section]);
+  const topicContent = activeTopic
+    ? (section.content?.topics?.[activeTopic] || null)
+    : null;
 
   return (
     <>
@@ -260,22 +118,12 @@ Be concise — this is an overview. Users click topic pills for deep-dives.`;
           ))}
         </div>
 
-        <div className="drawer-content" ref={contentRef}>
-          {loading && !content && (
-            <div className="drawer-loading">
-              <span className="drawer-spinner" />
-              <span>Generating section overview…</span>
-            </div>
-          )}
-          {error && <p className="drawer-error">{error}</p>}
-          {content && (
-            <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }} />
-          )}
-          {loading && content && <span className="drawer-cursor">▌</span>}
+        <div className="drawer-content">
+          <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(overviewText) }} />
         </div>
 
         <div className="drawer-footer">
-          <span className="drawer-ai-label">✦ Gemini AI · Supply Chain Roadmap</span>
+          <span className="drawer-ai-label">✦ Supply Chain Roadmap</span>
           <button className="drawer-close-btn" onClick={onClose}>← Roadmap</button>
         </div>
 
@@ -283,6 +131,7 @@ Be concise — this is an overview. Users click topic pills for deep-dives.`;
           <TopicDrawer
             topic={activeTopic}
             sectionTitle={section.title}
+            topicContent={topicContent}
             onClose={() => setActiveTopic(null)}
           />
         )}
@@ -335,10 +184,10 @@ function App() {
   }).filter(Boolean);
 
   useEffect(() => {
-    const handler = e => { if (e.key === "Escape") setActiveSection(null); };
+    const handler = e => { if (e.key === "Escape" && !activeSection) return; };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [activeSection]);
 
   return (
     <>
