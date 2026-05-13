@@ -15,30 +15,96 @@ function renderMarkdown(text) {
     .replace(/<p class="drawer-p"><\/p>/g, '');
 }
 
-// ── Badge colour mapping ──────────────────────────────────────
-function badgeClass(badge) {
-  if (!badge) return "";
+// ── Theme config per badge ───────────────────────────────────
+const THEMES = {
+  start: {
+    badgeClass: "section-badge section-badge--start",
+    cardTheme:  "card-theme-start",
+    accent:     "#b45309",
+    banner:     "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=60&auto=format",
+  },
+  core: {
+    badgeClass: "section-badge section-badge--core",
+    cardTheme:  "card-theme-core",
+    accent:     "#1d4ed8",
+    banner:     "https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=60&auto=format",
+  },
+  analytical: {
+    badgeClass: "section-badge section-badge--analytical",
+    cardTheme:  "card-theme-analytical",
+    accent:     "#6d28d9",
+    banner:     "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=60&auto=format",
+  },
+  operations: {
+    badgeClass: "section-badge section-badge--operations",
+    cardTheme:  "card-theme-operations",
+    accent:     "#15803d",
+    banner:     "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=60&auto=format",
+  },
+  digital: {
+    badgeClass: "section-badge section-badge--digital",
+    cardTheme:  "card-theme-digital",
+    accent:     "#0e7490",
+    banner:     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=60&auto=format",
+  },
+  advanced: {
+    badgeClass: "section-badge section-badge--advanced",
+    cardTheme:  "card-theme-advanced",
+    accent:     "#b91c1c",
+    banner:     "https://images.unsplash.com/photo-1611095973362-88e8e2557b06?w=700&q=60&auto=format",
+  },
+  data: {
+    badgeClass: "section-badge section-badge--data",
+    cardTheme:  "card-theme-data",
+    accent:     "#0369a1",
+    banner:     "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=700&q=60&auto=format",
+  },
+};
+
+const DEFAULT_THEME = {
+  badgeClass: "section-badge section-badge--default",
+  cardTheme:  "card-theme-start",
+  accent:     "#d97706",
+  banner:     "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=700&q=60&auto=format",
+};
+
+function getTheme(badge) {
+  if (!badge) return DEFAULT_THEME;
   const b = badge.toLowerCase();
-  if (b.includes("start"))    return "section-badge section-badge--start";
-  if (b.includes("core"))     return "section-badge section-badge--core";
-  if (b.includes("analyt"))   return "section-badge section-badge--analytical";
-  if (b.includes("operat"))   return "section-badge section-badge--operations";
-  if (b.includes("digital"))  return "section-badge section-badge--digital";
-  if (b.includes("advanced")) return "section-badge section-badge--advanced";
-  if (b.includes("data"))     return "section-badge section-badge--data";
-  return "section-badge section-badge--default";
+  if (b.includes("start"))    return THEMES.start;
+  if (b.includes("core"))     return THEMES.core;
+  if (b.includes("analyt"))   return THEMES.analytical;
+  if (b.includes("operat"))   return THEMES.operations;
+  if (b.includes("digital"))  return THEMES.digital;
+  if (b.includes("advanced")) return THEMES.advanced;
+  if (b.includes("data"))     return THEMES.data;
+  return DEFAULT_THEME;
+}
+
+function badgeClass(badge) {
+  return getTheme(badge).badgeClass;
 }
 
 // ── Topic Drawer (second panel) ───────────────────────────────
-function TopicDrawer({ topic, sectionTitle, topicContent, onClose }) {
+function TopicDrawer({ topic, sectionTitle, sectionBadge, topicContent, onClose }) {
   const contentRef = useRef(null);
 
   // Fallback if no hardcoded content for this topic
   const text = topicContent ||
     `## ${topic}\nDetailed content for this topic is coming soon.\n\n## How it relates to ${sectionTitle}\nThis topic is a key component of ${sectionTitle} in modern supply chain management.`;
 
+  const topicTheme = getTheme(sectionBadge);
   return (
-    <aside className="topic-drawer-panel" role="dialog" aria-modal="true" aria-label={`${topic} detail`}>
+    <aside
+      className="topic-drawer-panel drawer-light"
+      style={{ "--card-accent": topicTheme.accent }}
+      role="dialog" aria-modal="true" aria-label={`${topic} detail`}
+    >
+      {/* Light banner image in topic drawer */}
+      <div className="drawer-banner">
+        <img src={topicTheme.banner} alt="" loading="lazy" />
+      </div>
+
       <div className="drawer-header">
         <div className="drawer-header-inner">
           <span className="drawer-eyebrow">Topic Detail</span>
@@ -89,6 +155,11 @@ function SectionDrawer({ section, onClose }) {
 
       <aside className="drawer-panel" role="dialog" aria-modal="true" aria-label={`${section.title} detail`}>
 
+        {/* Banner image in section drawer */}
+        <div className="drawer-banner">
+          <img src={getTheme(section.badge).banner} alt="" loading="lazy" />
+        </div>
+
         <div className="drawer-header">
           <div className="drawer-header-inner">
             <span className="drawer-eyebrow">Deep Dive</span>
@@ -131,6 +202,7 @@ function SectionDrawer({ section, onClose }) {
           <TopicDrawer
             topic={activeTopic}
             sectionTitle={section.title}
+            sectionBadge={section.badge}
             topicContent={topicContent}
             onClose={() => setActiveTopic(null)}
           />
@@ -142,14 +214,21 @@ function SectionDrawer({ section, onClose }) {
 
 // ── Section Card ──────────────────────────────────────────────
 function RoadmapSection({ section, index, onOpen }) {
+  const theme = getTheme(section.badge);
   return (
     <div
-      className="section-card"
+      className={`section-card card-light ${theme.cardTheme}`}
+      style={{ "--card-accent": theme.accent, "--card-bg-color": "" }}
       onClick={() => onOpen(section)}
       role="button"
       tabIndex={0}
       onKeyDown={e => e.key === "Enter" && onOpen(section)}
     >
+      {/* Light banner image at top of card */}
+      <div className="section-card-banner">
+        <img src={theme.banner} alt="" loading="lazy" />
+      </div>
+
       <div className="section-header">
         {section.badge && (
           <div className="section-badge-wrap">
