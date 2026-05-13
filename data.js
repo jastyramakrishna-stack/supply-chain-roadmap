@@ -1,6 +1,7 @@
 const roadmapData = [
   {
     title: "Supply Chain Foundations",
+    badge: "Start Here",
     items: [
       "What is Supply Chain Management",
       "Logistics & Distribution Basics",
@@ -16,6 +17,7 @@ const roadmapData = [
 
   {
     title: "Core Planning Processes",
+    badge: "Core",
     items: [
       "Plan → Source → Make → Deliver → Return",
       "Sales & Operations Planning (S&OP)",
@@ -30,6 +32,7 @@ const roadmapData = [
 
   {
     title: "Forecasting Fundamentals",
+    badge: "Analytical",
     items: [
       "Qualitative Forecasting (Judgmental, Delphi)",
       "Time Series Forecasting",
@@ -44,11 +47,12 @@ const roadmapData = [
 
   {
     title: "Forecasting Models",
+    badge: "Analytical",
     items: [
       "Moving Average Models",
       "Exponential Smoothing (SES, DES, TES)",
       "ARIMA / SARIMA Models",
-      "Croston’s Method (Intermittent Demand)",
+      "Croston's Method (Intermittent Demand)",
       "Regression Models",
       "Machine Learning Forecasting (XGBoost, Random Forest)",
       "Deep Learning Forecasting (LSTM, Transformers)",
@@ -58,6 +62,7 @@ const roadmapData = [
 
   {
     title: "Forecasting Parameters (Required Inputs)",
+    badge: "Analytical",
     items: [
       "Historical Demand Data",
       "Lead Time & Lead Time Variability",
@@ -76,6 +81,7 @@ const roadmapData = [
 
   {
     title: "Replenishment Planning",
+    badge: "Operations",
     items: [
       "Reorder Point (ROP) Method",
       "Min-Max Planning",
@@ -90,6 +96,7 @@ const roadmapData = [
 
   {
     title: "Tools & Systems",
+    badge: "Core",
     items: [
       "ERP Systems (SAP MM/PP/SD, Oracle SCM)",
       "Advanced Planning Systems (SAP APO, IBP, Blue Yonder)",
@@ -104,6 +111,7 @@ const roadmapData = [
 
   {
     title: "Analytics & Optimization",
+    badge: "Data",
     items: [
       "Linear Programming (LP)",
       "Mixed Integer Programming (MIP)",
@@ -118,6 +126,7 @@ const roadmapData = [
 
   {
     title: "Modern Supply Chain",
+    badge: "Digital",
     items: [
       "AI & Machine Learning in Supply Chain",
       "Digital Twins",
@@ -132,6 +141,7 @@ const roadmapData = [
 
   {
     title: "Industry Knowledge",
+    badge: "Advanced",
     items: [
       "Retail Supply Chain",
       "E-commerce Fulfillment",
@@ -146,6 +156,7 @@ const roadmapData = [
 
   {
     title: "Capstone Projects",
+    badge: "Advanced",
     items: [
       "Build a Demand Forecasting Model",
       "Design a Replenishment Strategy for 100 SKUs",
