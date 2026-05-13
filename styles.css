@@ -246,6 +246,15 @@ input[type="text"]::placeholder {
 /* ── Section header ─────────────────────────────────────────── */
 .section-header {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Badge sits on its own line above the title */
+.section-badge-wrap {
+  display: flex;
+  align-items: center;
 }
 
 .section-title {
@@ -253,27 +262,96 @@ input[type="text"]::placeholder {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-bright);
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
-  flex-wrap: wrap;
   line-height: 1.3;
+  margin: 0;
 }
 
+/* ── Badge — base ───────────────────────────────────────────── */
 .section-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
   font-family: var(--font-mono);
   font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--amber-pale);
-  color: var(--amber-light);
-  border: 1px solid rgba(217, 119, 6, 0.28);
-  padding: 0.2em 0.55em;
+  padding: 0.25em 0.65em;
   border-radius: 2px;
   vertical-align: middle;
   white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Dot indicator before badge text */
+.section-badge::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* ── Badge colour variants ──────────────────────────────────── */
+
+/* Start Here — green: entry point, welcoming */
+.section-badge--start {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Core — blue: fundamental, essential */
+.section-badge--core {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Analytical — violet: data-driven, quantitative */
+.section-badge--analytical {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Operations — amber: hands-on, execution */
+.section-badge--operations {
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--amber-light);
+  border-color: rgba(217, 119, 6, 0.28);
+}
+
+/* Digital — teal: technology, future-facing */
+.section-badge--digital {
+  background: rgba(14, 116, 144, 0.15);
+  color: #22d3ee;
+  border-color: rgba(14, 116, 144, 0.35);
+}
+
+/* Advanced — coral/red: expert level */
+.section-badge--advanced {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Data — cyan: reporting, dashboards */
+.section-badge--data {
+  background: rgba(6, 182, 212, 0.1);
+  color: #67e8f9;
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+/* Fallback — amber (default) */
+.section-badge--default {
+  background: var(--amber-pale);
+  color: var(--amber-light);
+  border-color: rgba(217, 119, 6, 0.28);
 }
 
 /* ── Item list ──────────────────────────────────────────────── */
@@ -705,3 +783,114 @@ input[type="text"]::placeholder {
 @media (max-width: 540px) {
   .drawer-panel { width: 100vw; border-left: none; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TOPIC DRAWER — second nested panel
+   Slides in from the right edge of the section drawer
+   ═══════════════════════════════════════════════════════════ */
+
+.topic-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: -521px;
+  bottom: 0;
+  width: 500px;
+  background: #0a1628;
+  border-left: 2px solid var(--amber);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: drawerIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  z-index: 10;
+}
+
+/* Pills — clickable topic chips in section drawer */
+.drawer-topics-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.drawer-topic-pill {
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.drawer-topic-pill:hover {
+  background: rgba(217, 119, 6, 0.15) !important;
+  color: var(--amber-light) !important;
+  border-color: rgba(217, 119, 6, 0.4) !important;
+}
+
+.drawer-topic-pill--active {
+  background: rgba(217, 119, 6, 0.2) !important;
+  color: var(--amber-light) !important;
+  border-color: var(--amber) !important;
+}
+
+/* Parent section label inside topic drawer header */
+.drawer-parent-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+  display: block;
+}
+
+/* Topic drawer gets a stronger amber left border accent */
+.topic-drawer-panel .drawer-header {
+  background: #071020;
+  border-bottom-color: rgba(217, 119, 6, 0.2);
+}
+
+.topic-drawer-panel .drawer-footer {
+  background: #071020;
+  border-top-color: rgba(217, 119, 6, 0.15);
+}
+
+/* Real-world example block — italic highlighted quote */
+.drawer-body .drawer-example {
+  background: rgba(217, 119, 6, 0.07);
+  border-left: 2px solid var(--amber);
+  border-radius: 0;
+  padding: 0.65rem 0.9rem;
+  margin: 0.6rem 0;
+  font-size: 0.84rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Mobile: stack drawers full width */
+@media (max-width: 768px) {
+  .topic-drawer-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    border-left: none;
+    border-top: 2px solid var(--amber);
+    z-index: 200;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BADGE COLOUR VARIANTS — drawer badge inherits card colours
+   ═══════════════════════════════════════════════════════════ */
+
+.drawer-badge.section-badge--start      { background: rgba(16,185,129,0.12); color:#34d399; border-color:rgba(16,185,129,0.3); }
+.drawer-badge.section-badge--core       { background: rgba(59,130,246,0.12);  color:#60a5fa; border-color:rgba(59,130,246,0.3); }
+.drawer-badge.section-badge--analytical { background: rgba(139,92,246,0.12);  color:#a78bfa; border-color:rgba(139,92,246,0.3); }
+.drawer-badge.section-badge--operations { background: rgba(217,119,6,0.12);   color:#f59e0b; border-color:rgba(217,119,6,0.28); }
+.drawer-badge.section-badge--digital    { background: rgba(14,116,144,0.15);  color:#22d3ee; border-color:rgba(14,116,144,0.35); }
+.drawer-badge.section-badge--advanced   { background: rgba(239,68,68,0.10);   color:#f87171; border-color:rgba(239,68,68,0.25); }
+.drawer-badge.section-badge--data       { background: rgba(6,182,212,0.10);   color:#67e8f9; border-color:rgba(6,182,212,0.25); }
+.drawer-badge.section-badge--default    { background: var(--amber-pale);      color:var(--amber-light); border-color:rgba(217,119,6,0.28); }
