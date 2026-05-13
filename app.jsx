@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React;
 
 // ── Gemini API config ─────────────────────────────────────────
 const GEMINI_KEY = "AIzaSyB7hVVnWcbzXWDKui3INCN28OPhLpqVTpI";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_KEY}`;
 
 // ── Shared Gemini fetch helper ────────────────────────────────
 function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
@@ -15,11 +15,9 @@ function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
     })
   })
   .then(res => {
-    // 429 = rate limit — retry up to 3 times with exponential backoff
     if (res.status === 429 && attempt <= 3) {
       const delay = attempt * 2000;
       console.warn(`Rate limited. Retrying in ${delay}ms (attempt ${attempt}/3)...`);
-      onChunk(""); // keep spinner visible
       setTimeout(() => fetchAI(prompt, onChunk, onDone, onError, attempt + 1), delay);
       return null;
     }
@@ -27,7 +25,7 @@ function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
     return res.json();
   })
   .then(data => {
-    if (!data) return; // retry in progress
+    if (!data) return;
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     if (!text) throw new Error("Empty response from Gemini");
     let i = 0;
@@ -116,7 +114,7 @@ Be specific and practical. Use real companies and real numbers where possible.`;
       (chunk) => setContent(prev => prev + chunk),
       () => setLoading(false),
       (err) => {
-        setError("Unable to load explanation. Please check your API key or internet connection.");
+        setError("Unable to load explanation. Please try again in a moment.");
         setLoading(false);
         console.error(err);
       }
@@ -202,7 +200,7 @@ Be concise — this is an overview. Users click topic pills for deep-dives.`;
       (chunk) => setContent(prev => prev + chunk),
       () => setLoading(false),
       (err) => {
-        setError("Unable to load explanation. Please check your API key or internet connection.");
+        setError("Unable to load explanation. Please try again in a moment.");
         setLoading(false);
         console.error(err);
       }
