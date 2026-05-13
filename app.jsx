@@ -5,7 +5,7 @@ const GEMINI_KEY = "AIzaSyB7hVVnWcbzXWDKui3INCN28OPhLpqVTpI";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
 // ── Shared Gemini fetch helper ────────────────────────────────
-function fetchAI(prompt, onChunk, onDone, onError) {
+function fetchAI(prompt, onChunk, onDone, onError, attempt = 1) {
   fetch(GEMINI_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -15,13 +15,21 @@ function fetchAI(prompt, onChunk, onDone, onError) {
     })
   })
   .then(res => {
+    // 429 = rate limit — retry up to 3 times with exponential backoff
+    if (res.status === 429 && attempt <= 3) {
+      const delay = attempt * 2000;
+      console.warn(`Rate limited. Retrying in ${delay}ms (attempt ${attempt}/3)...`);
+      onChunk(""); // keep spinner visible
+      setTimeout(() => fetchAI(prompt, onChunk, onDone, onError, attempt + 1), delay);
+      return null;
+    }
     if (!res.ok) throw new Error(`Gemini API error: ${res.status}`);
     return res.json();
   })
   .then(data => {
+    if (!data) return; // retry in progress
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     if (!text) throw new Error("Empty response from Gemini");
-    // Simulate streaming effect chunk by chunk
     let i = 0;
     function tick() {
       if (i < text.length) {
