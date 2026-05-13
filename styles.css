@@ -58,6 +58,20 @@ body {
   isolation: isolate;
 }
 
+
+/* ── Author credit ──────────────────────────────────────────── */
+.subtitle-author {
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  animation: fadeSlideUp 0.7s 0.3s ease both;
+}
+
 /* Layered background: photo + gradient veil */
 .header::before {
   content: '';
@@ -894,3 +908,256 @@ input[type="text"]::placeholder {
 .drawer-badge.section-badge--advanced   { background: rgba(239,68,68,0.10);   color:#f87171; border-color:rgba(239,68,68,0.25); }
 .drawer-badge.section-badge--data       { background: rgba(6,182,212,0.10);   color:#67e8f9; border-color:rgba(6,182,212,0.25); }
 .drawer-badge.section-badge--default    { background: var(--amber-pale);      color:var(--amber-light); border-color:rgba(217,119,6,0.28); }
+
+
+/* ── Author credit ──────────────────────────────────────────── */
+.subtitle-author {
+
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHT BANNERS & THEMED SECTION BACKGROUNDS
+   Supply-chain photography banners, light cards, dark text
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Banner image strip above each card ────────────────────── */
+.section-card-banner {
+  position: relative;
+  height: 90px;
+  margin: -1.8rem -1.6rem 1.2rem -1.6rem; /* bleed to card edges */
+  overflow: hidden;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.section-card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.section-card:hover .section-card-banner img {
+  transform: scale(1.05);
+}
+
+/* Gradient fade at bottom of banner into card background */
+.section-card-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--card-bg-color, #f8f5f0));
+  pointer-events: none;
+}
+
+/* ── Light card mode — overrides dark defaults ──────────────── */
+.section-card.card-light {
+  color: #1e293b;
+}
+
+.section-card.card-light .section-title {
+  color: #0f172a;
+}
+
+.section-card.card-light .section-items li {
+  color: #334155;
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.section-card.card-light .section-items li::before {
+  color: var(--card-accent, #d97706);
+}
+
+.section-card.card-light:hover .section-items li {
+  color: #0f172a;
+}
+
+.section-card.card-light .section-items li:hover {
+  color: #000 !important;
+}
+
+.section-card.card-light .section-cta {
+  color: var(--card-accent, #d97706);
+}
+
+/* Left accent bar colour in light mode */
+.section-card.card-light::after {
+  background: var(--card-accent, #d97706);
+}
+
+/* Photo layer off — banner replaces it */
+.section-card.card-light::before {
+  display: none;
+}
+
+/* ── Per-badge themed backgrounds & accents ─────────────────── */
+
+/* Start Here — warm cream / logistics */
+.card-theme-start {
+  --card-bg-color: #fdf8f2;
+  --card-accent:   #b45309;
+  background: #fdf8f2 !important;
+}
+.card-theme-start:hover { background: #fef3e2 !important; }
+
+/* Core — cool slate blue / planning */
+.card-theme-core {
+  --card-bg-color: #f0f4ff;
+  --card-accent:   #1d4ed8;
+  background: #f0f4ff !important;
+}
+.card-theme-core:hover { background: #e8effe !important; }
+
+/* Analytical — soft violet / data */
+.card-theme-analytical {
+  --card-bg-color: #f5f0ff;
+  --card-accent:   #6d28d9;
+  background: #f5f0ff !important;
+}
+.card-theme-analytical:hover { background: #ede9fe !important; }
+
+/* Operations — light green / warehouse */
+.card-theme-operations {
+  --card-bg-color: #f0fdf4;
+  --card-accent:   #15803d;
+  background: #f0fdf4 !important;
+}
+.card-theme-operations:hover { background: #dcfce7 !important; }
+
+/* Digital — light teal / tech */
+.card-theme-digital {
+  --card-bg-color: #f0fffe;
+  --card-accent:   #0e7490;
+  background: #f0fffe !important;
+}
+.card-theme-digital:hover { background: #e0f9fa !important; }
+
+/* Advanced — light rose / expert */
+.card-theme-advanced {
+  --card-bg-color: #fff5f5;
+  --card-accent:   #b91c1c;
+  background: #fff5f5 !important;
+}
+.card-theme-advanced:hover { background: #fee2e2 !important; }
+
+/* Data — light cyan / analytics */
+.card-theme-data {
+  --card-bg-color: #f0fbff;
+  --card-accent:   #0369a1;
+  background: #f0fbff !important;
+}
+.card-theme-data:hover { background: #e0f2fe !important; }
+
+/* ── Drawer also gets a light banner ────────────────────────── */
+.drawer-banner {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.drawer-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+  filter: brightness(0.88) saturate(0.75);
+}
+
+/* Amber gradient overlay on drawer banner */
+.drawer-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.45) 0%,
+    rgba(15, 23, 42, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Topic drawer — light background ────────────────────────── */
+.topic-drawer-panel.drawer-light {
+  background: #f8fafc;
+  border-left: 2px solid var(--card-accent, #d97706);
+}
+
+.topic-drawer-panel.drawer-light .drawer-header {
+  background: #f1f5f9;
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.topic-drawer-panel.drawer-light .drawer-title {
+  color: #0f172a;
+}
+
+.topic-drawer-panel.drawer-light .drawer-eyebrow {
+  color: var(--card-accent, #d97706);
+}
+
+.topic-drawer-panel.drawer-light .drawer-parent-label {
+  color: #64748b;
+}
+
+.topic-drawer-panel.drawer-light .drawer-content {
+  background: #f8fafc;
+}
+
+.topic-drawer-panel.drawer-light .drawer-body {
+  color: #334155;
+}
+
+.topic-drawer-panel.drawer-light .drawer-h2 {
+  color: #0f172a;
+  border-bottom-color: rgba(0,0,0,0.1);
+}
+
+.topic-drawer-panel.drawer-light .drawer-h3 {
+  color: #1e293b;
+}
+
+.topic-drawer-panel.drawer-light .drawer-p {
+  color: #475569;
+}
+
+.topic-drawer-panel.drawer-light .drawer-li {
+  color: #475569;
+  border-bottom-color: rgba(0,0,0,0.06);
+}
+
+.topic-drawer-panel.drawer-light .drawer-li::before {
+  color: var(--card-accent, #d97706);
+}
+
+.topic-drawer-panel.drawer-light .drawer-footer {
+  background: #f1f5f9;
+  border-top-color: rgba(0,0,0,0.08);
+}
+
+.topic-drawer-panel.drawer-light .drawer-ai-label {
+  color: #94a3b8;
+}
+
+.topic-drawer-panel.drawer-light .drawer-close-btn {
+  color: var(--card-accent, #d97706);
+  border-color: rgba(0,0,0,0.15);
+}
+
+.topic-drawer-panel.drawer-light .drawer-close-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.topic-drawer-panel.drawer-light .drawer-close {
+  border-color: rgba(0,0,0,0.12);
+  color: #64748b;
+}
+
+.topic-drawer-panel.drawer-light .drawer-close:hover {
+  background: rgba(0,0,0,0.06);
+  color: #0f172a;
+}
