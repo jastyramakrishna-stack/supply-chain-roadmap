@@ -244,7 +244,7 @@ Be concise — this is a section overview, not a full explanation.`;
           <div className="drawer-header-inner">
             <span className="drawer-eyebrow">Deep Dive</span>
             <h2 className="drawer-title">{section.title}</h2>
-            {section.badge && <span className="drawer-badge">{section.badge}</span>}
+            {section.badge && <span className={`drawer-badge ${badgeClass(section.badge)}`}>{section.badge}</span>}
           </div>
           <button className="drawer-close" onClick={onClose} aria-label="Close drawer">✕</button>
         </div>
@@ -301,6 +301,20 @@ Be concise — this is a section overview, not a full explanation.`;
   );
 }
 
+// ── Badge colour mapping ─────────────────────────────────────
+function badgeClass(badge) {
+  if (!badge) return "";
+  const b = badge.toLowerCase();
+  if (b.includes("start"))      return "section-badge section-badge--start";
+  if (b.includes("core"))       return "section-badge section-badge--core";
+  if (b.includes("analyt"))     return "section-badge section-badge--analytical";
+  if (b.includes("operat"))     return "section-badge section-badge--operations";
+  if (b.includes("digital"))    return "section-badge section-badge--digital";
+  if (b.includes("advanced"))   return "section-badge section-badge--advanced";
+  if (b.includes("data"))       return "section-badge section-badge--data";
+  return "section-badge section-badge--default";
+}
+
 // ── Section Card ─────────────────────────────────────────────
 function RoadmapSection({ section, index, onOpen }) {
   return (
@@ -312,10 +326,12 @@ function RoadmapSection({ section, index, onOpen }) {
       onKeyDown={e => e.key === "Enter" && onOpen(section)}
     >
       <div className="section-header">
-        <h2 className="section-title">
-          {index + 1}. {section.title}
-          {section.badge && <span className="section-badge">{section.badge}</span>}
-        </h2>
+        {section.badge && (
+          <div className="section-badge-wrap">
+            <span className={badgeClass(section.badge)}>{section.badge}</span>
+          </div>
+        )}
+        <h2 className="section-title">{index + 1}. {section.title}</h2>
       </div>
       <ul className="section-items">
         {section.items.map((item, i) => <li key={i}>{item}</li>)}
