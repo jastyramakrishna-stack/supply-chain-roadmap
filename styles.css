@@ -1088,3 +1088,34 @@ input[type="text"]::placeholder {
   border-radius: 4px;
   vertical-align: middle;
 }
+
+/* ── Author LinkedIn link ───────────────────────────────────── */
+.author-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.75rem;
+  padding: 0.25em 0.75em;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  border-radius: 3px;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.author-linkedin:hover {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: #f97316;
+  color: #fb923c;
+}
+
+.author-linkedin svg {
+  flex-shrink: 0;
+}
