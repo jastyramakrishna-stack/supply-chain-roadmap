@@ -433,7 +433,7 @@ input[type="text"]::placeholder {
     url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1200&q=65&auto=format');
   background-size: cover;
   background-position: center top;
-  filter: brightness(0.18) saturate(0.4);
+  filter: brightness(0.45) saturate(0.75);
   z-index: -1;
 }
 
@@ -447,9 +447,10 @@ input[type="text"]::placeholder {
 
 .footer p {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  font-weight: 500;
 }
 
 .footer p::before {
