@@ -15,49 +15,42 @@ function renderMarkdown(text) {
     .replace(/<p class="drawer-p"><\/p>/g, '');
 }
 
-// ── Theme config per badge ───────────────────────────────────
+// ── Theme config per badge (colour + card style only) ────────
 const THEMES = {
   start: {
     badgeClass: "section-badge section-badge--start",
     cardTheme:  "card-theme-start",
     accent:     "#b45309",
-    banner:     "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=60&auto=format",
   },
   core: {
     badgeClass: "section-badge section-badge--core",
     cardTheme:  "card-theme-core",
     accent:     "#1d4ed8",
-    banner:     "https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=60&auto=format",
   },
   analytical: {
     badgeClass: "section-badge section-badge--analytical",
     cardTheme:  "card-theme-analytical",
     accent:     "#6d28d9",
-    banner:     "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=60&auto=format",
   },
   operations: {
     badgeClass: "section-badge section-badge--operations",
     cardTheme:  "card-theme-operations",
     accent:     "#15803d",
-    banner:     "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=60&auto=format",
   },
   digital: {
     badgeClass: "section-badge section-badge--digital",
     cardTheme:  "card-theme-digital",
     accent:     "#0e7490",
-    banner:     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=60&auto=format",
   },
   advanced: {
     badgeClass: "section-badge section-badge--advanced",
     cardTheme:  "card-theme-advanced",
     accent:     "#b91c1c",
-    banner:     "https://images.unsplash.com/photo-1611095973362-88e8e2557b06?w=700&q=60&auto=format",
   },
   data: {
     badgeClass: "section-badge section-badge--data",
     cardTheme:  "card-theme-data",
     accent:     "#0369a1",
-    banner:     "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=700&q=60&auto=format",
   },
 };
 
@@ -65,8 +58,23 @@ const DEFAULT_THEME = {
   badgeClass: "section-badge section-badge--default",
   cardTheme:  "card-theme-start",
   accent:     "#d97706",
-  banner:     "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=700&q=60&auto=format",
 };
+
+// ── One unique image per section (consistent 800×200 crop) ───
+// Index matches roadmapData order — every section gets a different photo
+const SECTION_IMAGES = [
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=200&fit=crop&q=70&auto=format", // SC Foundations — logistics hub
+  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=200&fit=crop&q=70&auto=format", // Core Planning — operations floor
+  "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Fundamentals — data
+  "https://images.unsplash.com/photo-1611095973362-88e8e2557b06?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Models — analytics
+  "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Parameters — tech inputs
+  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=200&fit=crop&q=70&auto=format", // Replenishment — warehouse shelves
+  "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=200&fit=crop&q=70&auto=format", // Tools & Systems — ERP screens
+  "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — charts
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=200&fit=crop&q=70&auto=format", // Modern SC — digital/AI
+  "https://images.unsplash.com/photo-1565793979965-e6cf2f8deee9?w=800&h=200&fit=crop&q=70&auto=format", // Industry Knowledge — manufacturing
+  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&h=200&fit=crop&q=70&auto=format", // Capstone Projects — aerial port
+];
 
 function getTheme(badge) {
   if (!badge) return DEFAULT_THEME;
@@ -100,11 +108,6 @@ function TopicDrawer({ topic, sectionTitle, sectionBadge, topicContent, onClose 
       style={{ "--card-accent": topicTheme.accent }}
       role="dialog" aria-modal="true" aria-label={`${topic} detail`}
     >
-      {/* Light banner image in topic drawer */}
-      <div className="drawer-banner">
-        <img src={topicTheme.banner} alt="" loading="lazy" />
-      </div>
-
       <div className="drawer-header">
         <div className="drawer-header-inner">
           <span className="drawer-eyebrow">Topic Detail</span>
@@ -154,11 +157,6 @@ function SectionDrawer({ section, onClose }) {
       <div className="drawer-backdrop" onClick={onClose} />
 
       <aside className="drawer-panel" role="dialog" aria-modal="true" aria-label={`${section.title} detail`}>
-
-        {/* Banner image in section drawer */}
-        <div className="drawer-banner">
-          <img src={getTheme(section.badge).banner} alt="" loading="lazy" />
-        </div>
 
         <div className="drawer-header">
           <div className="drawer-header-inner">
@@ -215,6 +213,7 @@ function SectionDrawer({ section, onClose }) {
 // ── Section Card ──────────────────────────────────────────────
 function RoadmapSection({ section, index, onOpen }) {
   const theme = getTheme(section.badge);
+  const bannerSrc = SECTION_IMAGES[index] || SECTION_IMAGES[0];
   return (
     <div
       className={`section-card card-light ${theme.cardTheme}`}
@@ -224,9 +223,9 @@ function RoadmapSection({ section, index, onOpen }) {
       tabIndex={0}
       onKeyDown={e => e.key === "Enter" && onOpen(section)}
     >
-      {/* Light banner image at top of card */}
+      {/* Unique banner image per section — consistent 800×200 crop */}
       <div className="section-card-banner">
-        <img src={theme.banner} alt="" loading="lazy" />
+        <img src={bannerSrc} alt="" loading="lazy" />
       </div>
 
       <div className="section-header">
