@@ -238,7 +238,7 @@ input[type="text"]::placeholder {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--amber);
+  background: var(--card-accent, var(--amber));
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -954,24 +954,37 @@ input[type="text"]::placeholder {
   transform: scale(1.05);
 }
 
-/* Gradient fade at bottom of banner into card background */
+/* Gradient fade at bottom of banner into dark card background */
 .section-card-banner::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--card-bg-color, #f8f5f0));
+  background: linear-gradient(to bottom, transparent, var(--card-bg, #111827));
   pointer-events: none;
 }
 
-/* Card themes — accent colour only, background stays dark */
-.card-theme-start    { --card-accent: #b45309; }
-.card-theme-core     { --card-accent: #1d4ed8; }
-.card-theme-analytical { --card-accent: #6d28d9; }
-.card-theme-operations { --card-accent: #15803d; }
-.card-theme-digital  { --card-accent: #0e7490; }
-.card-theme-advanced { --card-accent: #b91c1c; }
-.card-theme-data     { --card-accent: #0369a1; }
+/* Card themes — unique dark background + accent per badge */
+.card-theme-start    { --card-bg: #0d1f17; --card-accent: #10b981; background: #0d1f17 !important; }
+.card-theme-start:hover { background: #122a1f !important; }
+
+.card-theme-core     { --card-bg: #0d1629; --card-accent: #3b82f6; background: #0d1629 !important; }
+.card-theme-core:hover { background: #111d35 !important; }
+
+.card-theme-analytical { --card-bg: #160d2e; --card-accent: #8b5cf6; background: #160d2e !important; }
+.card-theme-analytical:hover { background: #1d1038 !important; }
+
+.card-theme-operations { --card-bg: #0a1f10; --card-accent: #22c55e; background: #0a1f10 !important; }
+.card-theme-operations:hover { background: #0e2815 !important; }
+
+.card-theme-digital  { --card-accent: #06b6d4; background: #061e26 !important; }
+.card-theme-digital:hover { background: #092730 !important; }
+
+.card-theme-advanced { --card-bg: #200a12; --card-accent: #f43f5e; background: #200a12 !important; }
+.card-theme-advanced:hover { background: #2a0d18 !important; }
+
+.card-theme-data     { --card-bg: #1a1600; --card-accent: #eab308; background: #1a1600 !important; }
+.card-theme-data:hover { background: #221d00 !important; }
 
 /* Drawer banners removed — banners are card-only */
 
