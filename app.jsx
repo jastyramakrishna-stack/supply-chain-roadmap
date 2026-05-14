@@ -66,13 +66,13 @@ const SECTION_IMAGES = [
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=200&fit=crop&q=70&auto=format", // SC Foundations — logistics hub
   "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=200&fit=crop&q=70&auto=format", // Core Planning — operations floor
   "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Fundamentals — data
-  "https://images.unsplash.com/photo-1611095973362-88e8e2557b06?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Models — analytics
+  "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Models — forecast trend chart ✓
   "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Parameters — tech inputs
   "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=200&fit=crop&q=70&auto=format", // Replenishment — warehouse shelves
-  "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=200&fit=crop&q=70&auto=format", // Tools & Systems — ERP screens
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=200&fit=crop&q=70&auto=format", // Tools & Systems — tech workspace ✓
   "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — charts
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=200&fit=crop&q=70&auto=format", // Modern SC — digital/AI
-  "https://images.unsplash.com/photo-1565793979965-e6cf2f8deee9?w=800&h=200&fit=crop&q=70&auto=format", // Industry Knowledge — manufacturing
+  "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=200&fit=crop&q=70&auto=format", // Industry Knowledge — factory line ✓
   "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&h=200&fit=crop&q=70&auto=format", // Capstone Projects — aerial port
 ];
 
