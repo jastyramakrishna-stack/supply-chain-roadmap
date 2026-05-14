@@ -600,7 +600,79 @@ DRP transforms replenishment from reactive (order when low) to proactive (plan r
     badge: "Core",
     content: {
       overview: `## What is it?\nSupply chain tools and systems are software platforms enabling planning, execution, visibility, and analytics.\n\n## Why it matters\nManual planning breaks down at scale — modern systems process millions of data points in minutes.\n\n## Key Concepts\n- ERP: backbone system (SAP, Oracle)\n- APS: optimised supply/demand planning\n- WMS: warehouse operations\n- TMS: freight and routing\n\n## Key Metrics / KPIs\n- System adoption rate\n- Data accuracy %\n- Planning cycle time reduction`,
-      topics: {}
+      topics: {
+        "ERP Systems (SAP MM/PP/SD, Oracle SCM)": `## What is it?
+ERP systems integrate all core business processes — finance, procurement, production, sales, and logistics — into a single connected platform, with SAP MM/PP/SD covering the end-to-end supply chain from purchase order to customer delivery.
+
+## Why it matters
+Nestle's SAP S/4HANA implementation across 80 countries reduced ERP instances from 80 to 1, standardised 900 business processes, and enabled procurement savings of over $700M annually through unified data and global visibility.
+
+## Key takeaway
+An ERP is only as good as its master data — every planning, procurement, and reporting process depends on accurate material masters, vendor data, and BOMs being maintained in real time.`,
+
+        "Advanced Planning Systems (SAP APO, IBP, Blue Yonder)": `## What is it?
+Advanced Planning Systems sit on top of ERP to deliver sophisticated demand forecasting, supply planning, and network optimisation — running complex algorithms across the full supply chain that standard ERP modules cannot perform.
+
+## Why it matters
+P&G implemented SAP APO reducing planning cycle time from 3 weeks to 3 days, improving forecast accuracy by 20%, and auto-generating replenishment plans for 50,000+ SKUs across 100+ manufacturing sites without manual intervention.
+
+## Key takeaway
+APS delivers its value through speed and optimisation — but requires clean ERP master data and disciplined process governance to realise the promised benefits.`,
+
+        "Warehouse Management Systems (WMS)": `## What is it?
+A WMS manages and optimises all warehouse operations in real time — directing goods receiving, put-away, storage, picking, packing, and despatch through barcode or RFID-confirmed transactions at every step.
+
+## Why it matters
+Ocado's proprietary WMS coordinates 1,000+ robots on a grid, picking a 50-item grocery order in under 5 minutes with 99.9% accuracy and processing 500,000+ order lines per hour — impossible with any manual or legacy system.
+
+## Key takeaway
+A WMS transforms a warehouse from a storage facility into a precision fulfilment engine — the difference between a 24-hour and a 1-hour pick-to-ship cycle time.`,
+
+        "Transportation Management Systems (TMS)": `## What is it?
+A TMS plans, executes, and optimises the physical movement of goods — managing carrier selection, route planning, freight booking, shipment tracking, and freight invoice validation against contracted rates.
+
+## Why it matters
+UPS's ORION TMS optimises 55,000 driver routes daily by avoiding left turns, saving 100M miles, 10M gallons of fuel, and 100,000 metric tons of CO2 annually — delivering commercial and environmental benefit simultaneously.
+
+## Key takeaway
+A TMS is one of the highest-ROI technology investments in logistics — route optimisation alone typically delivers 10–15% freight cost reduction within the first year of implementation.`,
+
+        "Inventory Optimization Tools": `## What is it?
+Inventory optimisation tools calculate mathematically optimal stock policies — safety stock, reorder points, and order quantities — across thousands of SKUs simultaneously, replacing rule-of-thumb targets with data-driven precision.
+
+## Why it matters
+Slimstock's Slim4 implementation at a Dutch retailer optimised 120,000 SKUs, reducing total inventory by 18% (€8M) while simultaneously improving service level from 94% to 97.2% — proving that optimisation improves both metrics at once.
+
+## Key takeaway
+Inventory optimisation tools pay for themselves rapidly — the gap between rule-of-thumb and mathematically optimal safety stock across a large portfolio is typically 15–25% inventory reduction.`,
+
+        "Forecasting Tools (Forecast Pro, SAP IBP, Anaplan)": `## What is it?
+Dedicated forecasting tools combine automatic statistical model selection, ML-powered baseline generation, collaborative override workflow, and accuracy tracking — all integrated with ERP and planning systems.
+
+## Why it matters
+A consumer goods company using Forecast Pro across 5,000 SKUs reduced MAPE from 35% to 19% — primarily through automatic model selection replacing manual moving average application and FVA analysis eliminating counterproductive commercial overrides.
+
+## Key takeaway
+The best forecasting tool is the one your team will actually use — usability, transparency, and ERP integration matter as much as algorithmic sophistication.`,
+
+        "Power BI / Tableau for Analytics": `## What is it?
+Power BI and Tableau connect to supply chain data sources — ERP, WMS, TMS, spreadsheets — to create interactive dashboards that make OTIF, forecast accuracy, inventory, and cost performance visible and actionable in real time.
+
+## Why it matters
+A FMCG company's Power BI supply chain control tower, refreshed daily from SAP, reduced weekly reporting time from 2 days to 2 hours — redirecting that time to exception management and supplier performance improvement.
+
+## Key takeaway
+Accessible, fast dashboards that answer the questions planners ask every day create far more value than complex reports nobody reads — visibility without action is just data.`,
+
+        "Excel Advanced (Pivot, Solver, VBA)": `## What is it?
+Advanced Excel — pivot tables, Power Query, Solver optimisation, and VBA macros — remains the most widely used supply chain analysis tool, bridging the gap between ERP data and operational decisions across every industry.
+
+## Why it matters
+A supply planner using Excel Solver to optimise production across 3 lines with 12 product constraints found solutions in 30 seconds vs 4 hours of manual scheduling — consistently 8% more efficient than the best manual approach.
+
+## Key takeaway
+Excel mastery is the most universally valuable supply chain skill — it empowers planners to answer their own questions without IT, and a skilled user can solve in hours what takes months to configure in a planning system.`
+      }
     },
     items: [
       "ERP Systems (SAP MM/PP/SD, Oracle SCM)",
@@ -619,7 +691,79 @@ DRP transforms replenishment from reactive (order when low) to proactive (plan r
     badge: "Data",
     content: {
       overview: `## What is it?\nSupply chain analytics uses mathematical modelling and algorithms to find optimal solutions to complex problems.\n\n## Why it matters\nOptimisation finds mathematically proven solutions — reducing costs in ways human intuition cannot achieve.\n\n## Key Concepts\n- Linear Programming: optimise subject to constraints\n- Network Optimisation: optimal facility locations\n- Simulation: model uncertainty risk-free\n- Routing Optimisation: TSP, VRP\n\n## Key Metrics / KPIs\n- Cost reduction achieved\n- Service level improvement\n- Network efficiency score`,
-      topics: {}
+      topics: {
+        "Linear Programming (LP)": `## What is it?
+Linear Programming finds the mathematically optimal outcome — maximum profit or minimum cost — subject to a set of linear constraints, using the simplex algorithm to identify the best feasible solution across all decision variables simultaneously.
+
+## Why it matters
+FedEx uses LP to optimise package routing across 650+ aircraft daily, assigning 15M+ packages to flights while minimising total cost and meeting delivery time guarantees — even a 1% improvement from better LP formulation saves tens of millions annually.
+
+## Key takeaway
+LP turns complex multi-variable decisions into mathematically proven optimal solutions — essential for any supply chain problem with a clear objective and measurable constraints.`,
+
+        "Mixed Integer Programming (MIP)": `## What is it?
+MIP extends Linear Programming to include integer and binary (yes/no) decision variables — essential for supply chain decisions involving discrete choices like facility locations, number of vehicles, or open/close decisions.
+
+## Why it matters
+Amazon uses MIP to decide which fulfilment centres should hold each ASIN, balancing storage cost, inbound freight, and last-mile delivery cost for every SKU-FC combination — making billions of binary placement decisions that reduce total fulfilment cost by hundreds of millions annually.
+
+## Key takeaway
+MIP is the tool for strategic supply chain decisions involving discrete choices — network design, fleet sizing, and facility location problems that Linear Programming cannot handle.`,
+
+        "Network Optimization Models": `## What is it?
+Network optimisation determines the optimal supply chain configuration — number and location of facilities, customer-to-DC assignments, and product flow — to minimise total cost while meeting service level requirements across the network.
+
+## Why it matters
+P&G used network optimisation to redesign their European distribution network, identifying that reducing from 13 to 5 regional DCs cut total logistics cost by 17% through scale economies — while actually improving next-day service to 98% of retailers.
+
+## Key takeaway
+Network optimisation reveals that the current supply chain structure is usually a historical accident — significant cost and service improvements are consistently achievable by designing from first principles.`,
+
+        "Simulation Models (Arena, AnyLogic)": `## What is it?
+Supply chain simulation uses discrete event or agent-based models to replicate the behaviour of complex supply systems under uncertainty — testing designs and policies in a risk-free virtual environment before committing to real-world implementation.
+
+## Why it matters
+Boeing used AnyLogic simulation to model their 787 Dreamliner supply chain before it went live, identifying a supplier quality reject rate that would cascade into production delays — the simulation revealed the bottleneck 18 months early, preventing a £500M schedule impact.
+
+## Key takeaway
+Simulation is supply chain's flight simulator — crash the plane a thousand times in software and fix every flaw before putting passengers on board.`,
+
+        "Cost-to-Serve Modeling": `## What is it?
+Cost-to-Serve analysis calculates the true, fully-loaded cost of servicing each customer, channel, or product using activity-based costing — revealing which commercial relationships are genuinely profitable and which destroy value.
+
+## Why it matters
+Unilever's CtS analysis revealed small independent retailers cost 4× more to serve than major grocery chains — restructuring small-trade service models, delivery frequency, and minimum order values improved small-trade profitability by 12 percentage points.
+
+## Key takeaway
+Without CtS analysis, companies systematically cross-subsidise unprofitable customers with profitable ones — CtS makes the invisible visible and enables genuinely profit-driven commercial decisions.`,
+
+        "Scenario Planning & Sensitivity Analysis": `## What is it?
+Scenario planning tests how supply chain performance changes under different future assumptions (base, optimistic, stress), while sensitivity analysis identifies which input variables have the greatest impact on cost or service outcomes.
+
+## Why it matters
+Unilever's pre-built disruption scenarios enabled production switching between categories within 72 hours of COVID-19 lockdowns — protecting £200M+ of revenue that competitors without pre-modelled scenarios lost to stockouts.
+
+## Key takeaway
+Scenario planning is insurance against being surprised by the future — teams that model disruptions before they happen respond faster, cheaper, and more effectively than those starting from scratch in a crisis.`,
+
+        "Routing Optimization (TSP, VRP)": `## What is it?
+Routing optimisation finds the most efficient routes for vehicles to deliver goods — TSP for single-vehicle problems and VRP for multi-vehicle fleets with capacity constraints and customer time windows — minimising distance, time, or cost.
+
+## Why it matters
+UPS's ORION routing system saves 100M miles annually by optimising 55,000 driver routes and strategically avoiding left turns — saving 10M gallons of fuel and 100,000 metric tons of CO2 while reducing cost per delivery.
+
+## Key takeaway
+Routing optimisation is one of the highest-ROI analytical applications in logistics — a 5–10% efficiency gain compounds across thousands of vehicles and millions of deliveries into massive annual savings.`,
+
+        "Inventory Optimization Algorithms": `## What is it?
+Inventory optimisation algorithms calculate mathematically optimal stock policies for every SKU — using the newsvendor model, (s,S) policies, and dynamic programming to minimise total inventory cost subject to service level constraints.
+
+## Why it matters
+Zara's inventory algorithm manages 12,000 new styles per year using a newsvendor framework — deliberately under-producing to avoid markdowns and accepting intentional stockouts on popular items to preserve scarcity, brand positioning, and margin.
+
+## Key takeaway
+Inventory optimisation replaces guesswork with data-driven policies that simultaneously reduce cost and improve service — the mathematical proof that you do not have to choose between the two.`
+      }
     },
     items: [
       "Linear Programming (LP)",
@@ -638,7 +782,79 @@ DRP transforms replenishment from reactive (order when low) to proactive (plan r
     badge: "Digital",
     content: {
       overview: `## What is it?\nModern supply chain leverages AI, IoT, blockchain, digital twins, and robotics to create faster, smarter, more resilient supply chains.\n\n## Why it matters\nEarly adopters gain structural cost and service advantages very difficult to compete with.\n\n## Key Concepts\n- AI/ML: autonomous planning and demand sensing\n- Digital Twin: real-time virtual replica\n- IoT: end-to-end sensor visibility\n- Blockchain: immutable traceability\n\n## Key Metrics / KPIs\n- Automation rate %\n- Visibility coverage %\n- Scope 3 emissions reduction`,
-      topics: {}
+      topics: {
+        "AI & Machine Learning in Supply Chain": `## What is it?
+AI and ML in supply chain use algorithms trained on historical data to automate routine decisions, improve demand forecasts, predict supply risks, and optimise operations continuously — shifting supply chains from reactive to predictive.
+
+## Why it matters
+Amazon's anticipatory shipping model uses ML to pre-position products in regional fulfilment centres before orders are placed — based on browsing behaviour and demand signals — reducing delivery time by 40% and cutting last-mile cost per order.
+
+## Key takeaway
+AI does not replace supply chain planners — it eliminates routine decisions so planners can focus on the exceptions, relationships, and strategic choices that genuinely require human judgment.`,
+
+        "Digital Twins": `## What is it?
+A digital twin is a real-time virtual replica of the physical supply chain — continuously updated from sensors, ERP data, and IoT feeds — used for simulation, disruption response, and optimisation without touching live operations.
+
+## Why it matters
+Unilever built a digital twin of their global supply chain in 2022 — when a key port closed, it ran 1,000 rerouting scenarios in minutes and identified the optimal alternative, saving an estimated $50M vs the reactive manual response competitors were forced to execute.
+
+## Key takeaway
+A digital twin turns supply chain management from reactive to proactive — you can see the impact of tomorrow's disruptions before they happen and test your response before committing.`,
+
+        "Control Towers & Real-Time Visibility": `## What is it?
+A supply chain control tower aggregates real-time data from ERP, WMS, TMS, supplier portals, and carrier APIs into a single dashboard — using AI-powered exception management to alert planners to risks before they become customer service failures.
+
+## Why it matters
+During COVID port congestion, Maersk TradeLens customers rerouted shipments 5–7 days faster than those relying on manual status checks — avoiding weeks of costly port demurrage charges by acting on real-time visibility rather than estimated arrivals.
+
+## Key takeaway
+Visibility without action is just data — the value of a control tower is the speed of exception detection and the quality of the coordinated response it enables across suppliers, carriers, and customers.`,
+
+        "IoT in Logistics": `## What is it?
+IoT uses connected sensors to track the physical location, condition, and status of goods, vehicles, and assets in real time — providing supply chain visibility that was previously impossible without human intervention at every step.
+
+## Why it matters
+Maersk deploys 300,000+ Remote Container Management units monitoring temperature, humidity, and O₂ every 15 minutes — detecting reefer failures within minutes of occurrence and reducing perishable cargo loss by 30% and customer claims by £150M annually.
+
+## Key takeaway
+IoT transforms logistics from assumption-based to fact-based — replacing estimated ETAs and guessed temperatures with real data that drives faster, more accurate supply chain decisions.`,
+
+        "Blockchain for Traceability": `## What is it?
+Blockchain creates an immutable, shared ledger of supply chain events across multiple parties — enabling trusted traceability without a central authority, where every transaction is permanently recorded and visible to all network participants.
+
+## Why it matters
+Walmart uses IBM Food Trust blockchain to trace leafy green provenance — what previously took 7 days to identify (which farm produced a contaminated bag of spinach) now takes 2.2 seconds, dramatically reducing recall scope and preventing destruction of safe product worth millions.
+
+## Key takeaway
+Blockchain is most valuable in multi-party supply chains where trust is low and reconciliation is costly — food safety, pharma serialisation, and trade finance are the proven high-value use cases.`,
+
+        "Autonomous Planning Systems": `## What is it?
+Autonomous planning systems use AI to make supply chain decisions — replenishment orders, production schedules, inventory reallocation — without human intervention, operating continuously at machine speed and flagging only true exceptions for review.
+
+## Why it matters
+Unilever's autonomous ordering system generates 80% of purchase orders without planner involvement across 70,000+ SKUs and 190 markets — freeing 300+ planner hours per week that are redirected to exception management and strategic supplier development.
+
+## Key takeaway
+Autonomous planning redirects supply chain planners from data processing to decision-making — from reactive firefighting to the proactive, strategic supply chain management that creates genuine competitive advantage.`,
+
+        "Robotics & Automation in Warehousing": `## What is it?
+Warehouse robotics uses AMRs, robotic arms, AS/RS systems, and automated sorters to perform physical tasks — picking, packing, storing, and moving goods — faster, more accurately, and at lower cost than human labour at scale.
+
+## Why it matters
+Amazon operates 750,000+ robots across 1,000+ fulfilment centres — Kiva robots bring shelving pods to pickers, reducing travel time by 75% and enabling 300–400 picks per hour vs 100 manually, at 50% lower cost per pick than traditional warehouses.
+
+## Key takeaway
+Warehouse automation makes existing workers dramatically more productive — creating fulfilment capabilities in speed, accuracy, and 24/7 operation that manual warehouses simply cannot match.`,
+
+        "Sustainability & Green Supply Chain": `## What is it?
+Sustainable supply chain management integrates environmental, social, and governance considerations into supply chain decisions — measuring and reducing Scope 3 emissions, eliminating waste, and ensuring ethical sourcing across the entire supply base.
+
+## Why it matters
+IKEA targets climate positivity by 2030 — sourcing 100% renewable energy, switching to wind-powered ocean vessels, designing all products for disassembly and recycling, and requiring all 1,600+ suppliers to commit to science-based emissions targets.
+
+## Key takeaway
+Sustainability is no longer optional in supply chain — regulatory requirements, customer expectations, and investor pressure are making ESG performance a commercial differentiator and a compliance requirement simultaneously.`
+      }
     },
     items: [
       "AI & Machine Learning in Supply Chain",
@@ -657,7 +873,79 @@ DRP transforms replenishment from reactive (order when low) to proactive (plan r
     badge: "Advanced",
     content: {
       overview: `## What is it?\nIndustry knowledge covers unique supply chain characteristics, challenges, and best practices across different sectors.\n\n## Why it matters\nEvery industry has different demand patterns, regulations, and customer expectations.\n\n## Key Concepts\n- FMCG: high volume, short shelf life, promotions\n- Pharma: cold chain, serialisation, compliance\n- Automotive: JIT, Tier networks, long lead times\n- E-commerce: same-day expectations, returns\n\n## Key Metrics / KPIs\n- Industry service level benchmarks\n- Regulatory compliance rate\n- Category fill rate`,
-      topics: {}
+      topics: {
+        "Retail Supply Chain": `## What is it?
+Retail supply chain manages the flow of thousands of SKUs from hundreds of suppliers through distribution networks to store shelves — balancing seasonal demand peaks, promotional volatility, planogram compliance, and the growing complexity of omnichannel fulfilment.
+
+## Why it matters
+Tesco manages 90,000 SKUs across 3,800 stores with a 24-hour replenishment cycle, processing 2.5M cases per day through their DC network — a scale that requires fully automated demand sensing, replenishment, and DC orchestration.
+
+## Key takeaway
+Retail supply chain success is built on data — POS visibility, accurate demand forecasting, and tight supplier collaboration are the foundation of high availability at low inventory cost.`,
+
+        "E-commerce Fulfillment": `## What is it?
+E-commerce fulfilment covers the complete process from receiving an online order to delivering it to the customer — warehousing, picking, packing, shipping, carrier management, and handling the 20–30% return rates that define online retail economics.
+
+## Why it matters
+Amazon's Prime fulfilment network processes 1.6M+ orders per day using 750,000+ robots — their 1–2 day delivery promise is only possible by pre-positioning inventory using ML demand predictions before the customer even places the order.
+
+## Key takeaway
+E-commerce fulfilment is won or lost in the last mile — accounting for 40–50% of total fulfilment cost, it is the most expensive, most visible, and most operationally complex part of the customer delivery experience.`,
+
+        "Manufacturing Supply Chain": `## What is it?
+Manufacturing supply chain integrates the inbound flow of raw materials, production planning and scheduling, and outbound distribution of finished goods — connecting purchasing, MRP, production execution, and logistics into a continuous flow.
+
+## Why it matters
+Toyota's Production System — kanban pull replenishment, JIT delivery, and continuous improvement — reduced WIP inventory to hours rather than weeks, and after the 2011 earthquake their supply chain recovery was 6 weeks faster than all global competitors.
+
+## Key takeaway
+Manufacturing supply chain excellence is built on flow — eliminating anything that interrupts the smooth, continuous conversion of materials into finished products in the hands of customers.`,
+
+        "Pharma & Cold Chain Logistics": `## What is it?
+Pharma supply chain involves highly regulated storage, handling, and distribution with strict temperature requirements — cold chain maintaining defined ranges from manufacture to patient — full serialisation traceability, and mandatory GDP compliance throughout.
+
+## Why it matters
+Pfizer's COVID-19 vaccine required storage at -70°C and was delivered to 170+ countries in 18 months — the fastest and most complex global cold chain deployment in history, involving custom thermal shippers and a purpose-built global distribution network.
+
+## Key takeaway
+In pharma supply chain, a quality or cold chain failure is a patient safety issue — making regulatory compliance and temperature integrity non-negotiable requirements, not operational targets.`,
+
+        "FMCG Supply Chain": `## What is it?
+FMCG supply chain manages high-volume, short-shelf-life products — food, beverages, personal care — with the defining challenge of balancing razor-thin margins, intense promotional complexity, and near-perfect service level requirements from major retailers.
+
+## Why it matters
+Unilever manages 70,000+ SKUs across 190 markets — during COVID lockdowns, their demand sensing capability using social media and pharmacy sales data enabled production switching between categories within 72 hours, protecting £200M+ of revenue.
+
+## Key takeaway
+FMCG supply chain is the most demanding balance between cost and service in commercial supply chain — margins are thin and retailer expectations are unforgiving, making operational excellence a genuine source of competitive advantage.`,
+
+        "Automotive Supply Chain": `## What is it?
+Automotive supply chain is defined by deep multi-tier supplier networks, JIT sequenced delivery to assembly lines, very long tooling lead times of 18–36 months, and catastrophic consequences of any supply failure — one missing part stops the entire production line.
+
+## Why it matters
+During the 2021 semiconductor shortage, Toyota held 2–6 months of safety stock on critical chips (a lesson from the 2011 earthquake) — maintaining production while GM, Ford, and VW shut assembly lines and collectively lost over 1M units of production.
+
+## Key takeaway
+Automotive supply chain teaches the definitive lesson in risk management — JIT minimises cost in normal times but safety stock prevents catastrophe in abnormal times, and the cost of failure dwarfs the savings of leanness.`,
+
+        "Global Trade Compliance": `## What is it?
+Global trade compliance ensures all cross-border goods movement complies with import and export regulations, customs requirements, trade agreements, and sanctions — using correct HS codes, valuation, origin rules, and documentation for every shipment.
+
+## Why it matters
+Post-Brexit, companies with pre-classified HS codes, established customs brokers, and automated declarations maintained delivery times — those without faced weeks of delays at Dover, £10,000+ demurrage per container, and perishable cargo losses.
+
+## Key takeaway
+Global trade compliance is invisible when working and catastrophically visible when it fails — cheaper to invest in proactively than to fix reactively when shipments are held at borders.`,
+
+        "Incoterms & Customs Documentation": `## What is it?
+Incoterms are standardised trade terms defining who bears responsibility for shipping costs, insurance, and risk at each stage of international transport — from EXW (buyer takes all risk) to DDP (seller responsible for everything including import duties).
+
+## Why it matters
+A UK importer on DDP terms had no visibility of ocean freight costs — when shipping rates tripled in 2021, the cost increase was built invisibly into product prices, revealing that Incoterm selection has direct P&L implications beyond just legal risk allocation.
+
+## Key takeaway
+Incoterms are strategic supply chain decisions, not standard contract clauses — they define where commercial risk sits, who controls logistics, and ultimately who absorbs the cost when things go wrong in international trade.`
+      }
     },
     items: [
       "Retail Supply Chain",
