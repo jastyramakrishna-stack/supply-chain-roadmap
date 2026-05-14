@@ -287,7 +287,79 @@ Not all SKUs deserve equal planning attention — ABC/XYZ tells you exactly wher
     badge: "Analytical",
     content: {
       overview: `## What is it?\nForecasting models are mathematical techniques predicting future demand from historical patterns and external signals.\n\n## Why it matters\nThe right model for the right product type dramatically improves forecast accuracy.\n\n## Key Concepts\n- Moving Average: simple average of last N periods\n- Exponential Smoothing: weighted average favouring recent data\n- ARIMA: captures autocorrelation and trend\n- ML models: XGBoost, Random Forest\n\n## Key Metrics / KPIs\n- MAPE by model type\n- Forecast Value Added vs naive\n- Model stability over time`,
-      topics: {}
+      topics: {
+        "Moving Average Models": `## What is it?
+Moving Average models forecast demand by averaging actual demand over a fixed number of past periods — simple, transparent, and effective as a baseline for stable, low-variability products.
+
+## Why it matters
+A food manufacturer using 4-week SMA across 800 stable ambient SKUs achieves 91% forecast accuracy at SKU-week level — sufficient for fully automated replenishment without any planner intervention.
+
+## Key takeaway
+Moving averages are the benchmark every supply chain should beat — if a more complex method doesn't outperform a simple MA, the added complexity isn't justified.`,
+
+        "Exponential Smoothing (SES, DES, TES)": `## What is it?
+Exponential Smoothing gives exponentially decreasing weight to older data — SES for stable demand, DES (Holt's) adding trend correction, and TES (Holt-Winters) adding both trend and seasonal components.
+
+## Why it matters
+Amazon uses Holt-Winters as its baseline across millions of SKUs — for seasonal products like sunscreen, TES outperforms simple moving average by 15–20% MAPE by capturing both growth trend and summer uplift simultaneously.
+
+## Key takeaway
+Exponential smoothing is the workhorse of operational forecasting — fast to compute, easy to explain, and surprisingly accurate for the majority of stable to moderately seasonal products.`,
+
+        "ARIMA / SARIMA Models": `## What is it?
+ARIMA combines past values, differencing for stationarity, and past forecast errors to model time series; SARIMA extends this with seasonal parameters — the statistical gold standard for univariate demand forecasting.
+
+## Why it matters
+A beverage company switched from moving average to SARIMA on weekly sales data, improving forecast accuracy from 28% MAPE to 11% MAPE — reducing safety stock by 35% while maintaining the same service level.
+
+## Key takeaway
+ARIMA delivers when history has clear patterns — but requires sufficient data history, stable demand, and statistical expertise to implement and maintain correctly.`,
+
+        "Croston's Method (Intermittent Demand)": `## What is it?
+Croston's method separately forecasts the average demand size and the average interval between sales using exponential smoothing — specifically designed for intermittent demand with many zero-demand periods.
+
+## Why it matters
+An automotive parts distributor switching from moving average to Croston's on 60% of intermittent SKUs reduced forecast error by 40% and cut obsolete stock write-offs by £2M annually.
+
+## Key takeaway
+Using standard forecasting methods on intermittent demand produces wildly inaccurate results — Croston's is the specialist tool that makes slow-moving and spare-parts inventory manageable.`,
+
+        "Regression Models": `## What is it?
+Regression models demand as a function of external drivers — price, promotions, weather, economic indicators — quantifying exactly how much each variable moves demand volume.
+
+## Why it matters
+Heineken's regression model quantifies that a 10% promotional price cut drives +18% volume and a 1°C temperature increase drives +2.3% beer demand — enabling precise production planning around events and weather forecasts.
+
+## Key takeaway
+Regression turns qualitative market knowledge into quantified forecast inputs — the bridge between commercial intelligence and planning system requirements.`,
+
+        "Machine Learning Forecasting (XGBoost, Random Forest)": `## What is it?
+ML forecasting uses algorithms that learn complex, non-linear relationships between demand and hundreds of features — price, promotions, weather, competitor activity — capturing patterns that classical statistics cannot model.
+
+## Why it matters
+Walmart uses gradient-boosted trees trained on 400+ features for 100M+ SKU-location combinations weekly, achieving 15–20% better MAPE than statistical baselines — representing billions in reduced inventory and prevented lost sales.
+
+## Key takeaway
+ML forecasting excels when demand is driven by many interacting external factors — but requires clean data, skilled data scientists, and ongoing model maintenance to sustain its accuracy.`,
+
+        "Deep Learning Forecasting (LSTM, Transformers)": `## What is it?
+Deep learning forecasting uses neural networks — LSTMs and Temporal Fusion Transformers — to learn complex temporal patterns across long demand sequences that shallower models consistently miss.
+
+## Why it matters
+Amazon's DeepAR model, trained globally across all SKUs simultaneously, outperformed per-SKU statistical models by 25% MAPE — particularly on new products with limited history by learning patterns shared across similar products.
+
+## Key takeaway
+Deep learning delivers its greatest value at scale — millions of SKUs, rich feature data, and engineering capability to train and maintain neural models in production.`,
+
+        "Probabilistic Forecasting": `## What is it?
+Probabilistic forecasting produces a range of demand outcomes with associated probabilities — rather than a single point estimate — enabling risk-informed inventory decisions based on the full distribution of possible futures.
+
+## Why it matters
+Amazon holds inventory at the P85 demand quantile at each fulfilment centre — ensuring 85% probability of no stockout while consciously optimising the cost of the remaining 15% risk rather than blindly chasing a point forecast.
+
+## Key takeaway
+Probabilistic forecasting changes the question from "what will demand be?" to "what is the range of outcomes and what does each cost?" — enabling genuinely risk-informed inventory decisions.`
+      }
     },
     items: [
       "Moving Average Models",
@@ -306,7 +378,115 @@ Not all SKUs deserve equal planning attention — ABC/XYZ tells you exactly wher
     badge: "Analytical",
     content: {
       overview: `## What is it?\nForecasting parameters are inputs and settings configuring how forecasting models generate predictions.\n\n## Why it matters\nWrong parameters produce systematically biased forecasts across thousands of SKUs.\n\n## Key Concepts\n- History length: periods of data to include\n- Service level: target fill rate drives safety stock\n- Lead time: affects replenishment timing\n- MOQ: minimum order quantity constrains options\n\n## Key Metrics / KPIs\n- Forecast accuracy by parameter segment\n- Safety stock investment vs service level\n- Working capital impact`,
-      topics: {}
+      topics: {
+        "Historical Demand Data": `## What is it?
+Historical demand data is the foundation of all quantitative forecasting — the record of past customer demand used to identify patterns, fit models, and generate predictions for future periods.
+
+## Why it matters
+A retailer whose system was trained on shipment data (not POS sales) found it systematically under-forecast during stockout periods — switching to POS data improved MAPE by 12% across 3,000 SKUs overnight.
+
+## Key takeaway
+Garbage in, garbage out — data quality is the single biggest determinant of forecast accuracy, more important than any model complexity or algorithmic sophistication.`,
+
+        "Lead Time & Lead Time Variability": `## What is it?
+Lead time is the time between placing an order and receiving goods; lead time variability is the uncertainty around that average — both must be quantified to calculate accurate safety stock requirements.
+
+## Why it matters
+A UK retailer with 45-day average lead times and ±12 days variability found that factoring in variability (not just the average) increased safety stock by 40% — but reduced stockouts by 85% and eliminated £1.2M in annual emergency air freight costs.
+
+## Key takeaway
+It is the variability in lead time that creates stockouts, not the average — ignoring it is one of the most common and costly safety stock calculation errors.`,
+
+        "Service Level Targets": `## What is it?
+Service level targets define the probability of fulfilling customer demand from available stock — expressed as a Z-score in safety stock calculations and the primary commercial driver of inventory investment decisions.
+
+## Why it matters
+Amazon Prime targets 99.9% availability, requiring Z=3.09 in safety stock formulas — for a product with σ=20 units/day and a 2-day lead time, that means holding 87 units of safety stock per SKU across millions of products.
+
+## Key takeaway
+Service level targets are commercial commitments expressed as numbers — differentiating targets by SKU importance is the key to optimising the cost-service trade-off across the portfolio.`,
+
+        "Seasonality Index": `## What is it?
+A seasonality index is a multiplier quantifying how demand in a specific period compares to the annual average — enabling forecasting systems to automatically scale predictions up or down for recurring seasonal patterns.
+
+## Why it matters
+Cadbury's Easter egg seasonality index reaches 8.2× average weekly demand in March/April, driving a January–February production run that pre-builds 6 months of seasonal stock without post-Easter write-offs worth millions.
+
+## Key takeaway
+Seasonality indices prevent forecasting systems from being perpetually surprised by the same recurring demand patterns — the same preventable mistake repeated year after year.`,
+
+        "Trend Coefficients": `## What is it?
+Trend coefficients quantify the rate at which underlying demand is growing or declining over time — essential for projecting forecasts beyond the historical period without systematically over or under-predicting.
+
+## Why it matters
+A consumer electronics brand failed to damp a 3.2% weekly growth trend for long-horizon forecasting, producing a 40% over-forecast for 2021 and creating £8M of excess stock when growth plateaued — corrected by adding trend damping.
+
+## Key takeaway
+Trend is the most dangerous forecasting parameter to get wrong for long horizons — small systematic errors compound over months into massive over or under-production.`,
+
+        "Safety Stock Parameters": `## What is it?
+Safety stock parameters — service level Z-score, demand standard deviation, and lead time — are the inputs to SS = Z × σ × √LT, the formula that converts uncertainty into the physical inventory buffer protecting against stockouts.
+
+## Why it matters
+A pharma distributor recalculating safety stock parameters quarterly (vs annually) identified 30% of SKUs where actual demand variability had materially changed — right-sizing safety stock saved £1.8M in working capital while maintaining service levels.
+
+## Key takeaway
+Safety stock parameters are not set-and-forget — stale inputs silently create either stockouts or excess inventory across the entire portfolio as demand patterns evolve.`,
+
+        "Reorder Point Inputs": `## What is it?
+Reorder Point inputs — average daily demand, lead time, and safety stock — feed the formula ROP = (D × LT) + SS, which determines the exact inventory level at which a new purchase order must be triggered.
+
+## Why it matters
+A distributor recalculating ROPs annually found 35% of SKUs had significantly changed demand patterns since the last update — causing 420 stockouts and £600K in lost margin, fixed by moving to monthly automated recalculation.
+
+## Key takeaway
+A ROP correct 12 months ago may be dangerously wrong today — automated, frequent recalculation is essential for any business with dynamic demand or variable supplier lead times.`,
+
+        "Minimum Order Quantity (MOQ)": `## What is it?
+MOQ is the smallest quantity a supplier will produce or sell in a single order — a constraint that directly impacts how much inventory must be held and how frequently replenishment can occur regardless of EOQ.
+
+## Why it matters
+A fashion retailer negotiating MOQ from 5,000 to 1,500 units (accepting a 10% price premium) reduced markdown losses by £4M annually — proving that reducing MOQ often delivers more value than negotiating lower unit prices.
+
+## Key takeaway
+MOQ is the most overlooked inventory planning constraint — reducing it through supplier negotiation often delivers more value than months of demand forecasting improvement.`,
+
+        "Supplier Lead Time Reliability": `## What is it?
+Supplier lead time reliability measures how consistently a supplier delivers within the agreed lead time — quantified as On-Time Delivery % and lead time standard deviation, both direct inputs to safety stock calculations.
+
+## Why it matters
+A manufacturer's analysis showed their backup supplier (75% OTD, σLT=5 days) required 3× more safety stock than their primary supplier (95% OTD, σLT=2 days) — making the working capital cost of poor reliability explicitly visible for the first time.
+
+## Key takeaway
+A less reliable supplier is not just an operational headache — it is a quantifiable working capital cost that should directly inform sourcing and dual-supply strategy decisions.`,
+
+        "Demand Variability (Standard Deviation)": `## What is it?
+Demand variability, measured by standard deviation (σ), quantifies how much actual demand fluctuates around the average — the primary driver of safety stock requirements and the single biggest determinant of inventory investment across the portfolio.
+
+## Why it matters
+A grocery supplier found one key account drove 80% of demand variability through irregular ordering patterns — implementing a weekly ordering schedule reduced that SKU's σ by 45%, cutting safety stock by £400K and stockouts by 60% simultaneously.
+
+## Key takeaway
+Reducing demand variability at source through collaboration and ordering discipline is more powerful than increasing safety stock to cope with it after the fact.`,
+
+        "Forecast Error Metrics (MAD, MSE, RMSE)": `## What is it?
+MAD, MSE, and RMSE measure forecast error in absolute or squared units — MAD is most operationally useful because it directly converts into safety stock via SS = Z × 1.25 × MAD without needing demand distribution assumptions.
+
+## Why it matters
+A consumer goods company used MAD=850 units (weekly) to set safety stock at 1.65 × 850 = 1,403 units for 95% service level — directly translating forecast error into a specific physical inventory number that finance could cost and challenge.
+
+## Key takeaway
+MAD is the bridge between statistical accuracy measurement and physical inventory decisions — the metric that connects the forecast team to the warehouse.`,
+
+        "Lifecycle Stage (New, Mature, Decline)": `## What is it?
+Product lifecycle stage — introduction, growth, maturity, decline — determines the appropriate forecasting method, safety stock level, and inventory exit strategy, because demand behaviour is fundamentally different at each stage.
+
+## Why it matters
+Apple manages iPhone lifecycle with precision, ramping down safety stock on the current model 6 months before a new launch while simultaneously allocating production capacity to the replacement — minimising write-off and launch stockout risk across a £50B+ annual product transition.
+
+## Key takeaway
+Applying a mature-product forecasting strategy to a new or declining product is one of the most common and costly supply chain mistakes — lifecycle stage must always drive method selection.`
+      }
     },
     items: [
       "Historical Demand Data",
@@ -329,7 +509,79 @@ Not all SKUs deserve equal planning attention — ABC/XYZ tells you exactly wher
     badge: "Operations",
     content: {
       overview: `## What is it?\nReplenishment planning determines when and how much to order to maintain optimal inventory levels.\n\n## Why it matters\nPoor replenishment leads to stockouts or overstock — the two most expensive outcomes in supply chain.\n\n## Key Concepts\n- ROP: Reorder Point — triggers an order\n- EOQ: Economic Order Quantity — optimal size\n- Safety Stock: buffer against variability\n- Min-Max: simple boundary system\n\n## Key Metrics / KPIs\n- Days of Supply (DOS)\n- Fill Rate %\n- Inventory Turns\n- Stock Cover vs Target`,
-      topics: {}
+      topics: {
+        "Reorder Point (ROP) Method": `## What is it?
+The Reorder Point is the inventory level at which a new replenishment order must be placed — calculated as ROP = (Average daily demand × Lead time) + Safety stock — ensuring stock never runs out during the replenishment cycle.
+
+## Why it matters
+A medical distributor using automated ROP triggers for 5,000 SKUs maintains 99% availability on surgical supplies without manual intervention — orders fire automatically the moment stock hits the calculated threshold.
+
+## Key takeaway
+Get the ROP right and inventory runs itself; get it wrong and planners spend every day firefighting stockouts and expediting emergency orders.`,
+
+        "Min-Max Planning": `## What is it?
+Min-Max sets two inventory boundaries — a minimum level that triggers an order and a maximum level to order up to — providing a simple, rule-based replenishment system that is transparent and easy to operate at scale.
+
+## Why it matters
+A hospital pharmacy uses Min-Max for 800 drug SKUs, with the system scanning all items below minimum every morning and generating purchase orders automatically — freeing pharmacists entirely from manual stock management.
+
+## Key takeaway
+Min-Max is the right tool for simple, stable environments where transparency and operational ease outweigh the marginal gains of more sophisticated optimisation approaches.`,
+
+        "Periodic Review Systems": `## What is it?
+In periodic review, inventory is checked and orders placed at fixed time intervals (weekly, monthly) rather than continuously — trading some additional safety stock cost for the operational simplicity of a predictable ordering schedule.
+
+## Why it matters
+A retailer ordering from each supplier on a fixed weekly schedule consolidates freight, simplifies supplier relationships, and reduces transaction costs — accepting slightly higher safety stock as the cost of the operational simplicity gained.
+
+## Key takeaway
+Periodic review trades inventory efficiency for operational simplicity — the right choice when fixed-schedule ordering delivers consolidation savings that outweigh the extra buffer stock required.`,
+
+        "Continuous Review Systems": `## What is it?
+In continuous review, inventory is monitored in real time and a replenishment order triggers immediately whenever stock falls to the reorder point — minimising safety stock by reducing the exposure period to demand variability.
+
+## Why it matters
+Amazon uses continuous review across 350M+ SKUs — every customer purchase decrements inventory instantly, and when any ASIN at any fulfilment centre crosses its ROP, an automated purchase order fires without any human involvement.
+
+## Key takeaway
+Continuous review minimises safety stock and maximises responsiveness — the right system for high-value, fast-moving SKUs where stockout costs justify the investment in real-time monitoring.`,
+
+        "Safety Stock Calculation": `## What is it?
+Safety stock is the buffer inventory above average lead time demand, calculated as SS = Z × σ_demand × √Lead Time — protecting against stockouts caused by demand spikes or supply delays during the replenishment cycle.
+
+## Why it matters
+Amazon targets 99.9% Prime availability (Z=3.09) — for a product with σ=20 units/day and a 2-day lead time, safety stock = 87 units; reducing lead time to 1 day drops it to 62 units, a 29% reduction purely from supplier improvement.
+
+## Key takeaway
+Safety stock is the calculated cost of your service level commitment — the formula makes explicit exactly what each additional percentage point of availability costs in physical inventory.`,
+
+        "Economic Order Quantity (EOQ)": `## What is it?
+EOQ is the order quantity minimising total inventory cost — calculated as EOQ = √(2DS/H) where D=annual demand, S=order cost, H=holding cost — finding the point where ordering cost equals holding cost.
+
+## Why it matters
+A distributor ordering 500 units of an industrial fastener discovered their EOQ was 361 units — switching to EOQ-sized orders reduced total annual inventory cost by £1,800 per SKU, saving £7.2M across 4,000 SKUs.
+
+## Key takeaway
+EOQ is simple but powerful — even with approximate inputs it delivers far better results than gut-feel ordering quantities, and forces explicit recognition of both holding and ordering costs.`,
+
+        "Multi-Echelon Inventory Optimization (MEIO)": `## What is it?
+MEIO optimises inventory levels simultaneously across all levels of the supply network — factory, regional DC, local DC, and store — rather than independently optimising each location, treating the network as a system.
+
+## Why it matters
+HP implemented MEIO for their printer supply chain in the 1990s, pooling risky components centrally and configuring locally — reducing finished goods inventory by $120M while maintaining service levels, pioneering postponement in high-tech manufacturing.
+
+## Key takeaway
+Optimising each warehouse independently always produces a sub-optimal network — MEIO treats the supply chain as a system and unlocks inventory reductions that no amount of local optimisation can achieve.`,
+
+        "Distribution Requirements Planning (DRP)": `## What is it?
+DRP is a demand-driven planning method that projects future inventory levels at each distribution location and generates time-phased replenishment orders across the network — replacing reactive ordering with proactive planning.
+
+## Why it matters
+Nestle uses DRP across 12 regional DCs serving 50,000+ delivery points, projecting 13 weeks of requirements and automatically generating transfer orders — synchronising the entire distribution network on a weekly planning cycle.
+
+## Key takeaway
+DRP transforms replenishment from reactive (order when low) to proactive (plan requirements weeks ahead) — eliminating both stockouts and the emergency logistics costs that reactive replenishment inevitably creates.`
+      }
     },
     items: [
       "Reorder Point (ROP) Method",
