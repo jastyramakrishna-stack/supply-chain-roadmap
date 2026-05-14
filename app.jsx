@@ -73,7 +73,6 @@ const SECTION_IMAGES = [
   "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — math optimization
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=200&fit=crop&q=70&auto=format", // Modern SC — digital/AI
   "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=200&fit=crop&q=70&auto=format", // Industry Knowledge — factory line ✓
-  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&h=200&fit=crop&q=70&auto=format", // Capstone Projects — aerial port
 ];
 
 function getTheme(badge) {
@@ -275,7 +274,7 @@ function App() {
     <>
       <div className="meta">
         <p>
-          Covers foundations → planning → forecasting → replenishment → systems → analytics → modern SC.
+          Covers foundations → planning → forecasting → replenishment → systems → analytics → modern SC → industry.
           <br />
           <span className="meta-hint">Click any section to explore. Click a topic pill for a deep-dive with examples.</span>
         </p>
