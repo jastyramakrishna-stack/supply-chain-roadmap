@@ -70,7 +70,7 @@ const SECTION_IMAGES = [
   "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Parameters — tech inputs
   "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=200&fit=crop&q=70&auto=format", // Replenishment — warehouse shelves
   "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=200&fit=crop&q=70&auto=format", // Tools & Systems — tech workspace ✓
-  "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — charts
+  "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — math optimization
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=200&fit=crop&q=70&auto=format", // Modern SC — digital/AI
   "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=200&fit=crop&q=70&auto=format", // Industry Knowledge — factory line ✓
   "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&h=200&fit=crop&q=70&auto=format", // Capstone Projects — aerial port
