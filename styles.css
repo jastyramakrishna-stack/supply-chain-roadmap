@@ -78,10 +78,10 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=75&auto=format');
+    url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1600&h=600&fit=crop&q=85&auto=format&sat=20&bri=5');
   background-size: cover;
   background-position: center 40%;
-  filter: brightness(0.28) saturate(0.55);
+  filter: brightness(0.45) saturate(0.85);
   transform: scale(1.03);
   animation: heroShift 20s ease-in-out infinite alternate;
   z-index: -2;
