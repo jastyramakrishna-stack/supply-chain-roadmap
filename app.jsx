@@ -188,23 +188,27 @@ function SectionDrawer({ section, onClose }) {
         </div>
 
         <div className="drawer-content">
-          <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(overviewText) }} />
+          {activeTopic && topicContent ? (
+            <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(topicContent) }} />
+          ) : activeTopic && !topicContent ? (
+            <div className="drawer-body">
+              <p className="drawer-p" style={{color:"var(--text-mid)",fontStyle:"italic"}}>
+                Content for "{activeTopic}" coming soon.
+              </p>
+            </div>
+          ) : (
+            <div className="drawer-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(overviewText) }} />
+          )}
         </div>
 
         <div className="drawer-footer">
           <span className="drawer-ai-label">✦ Supply Chain Roadmap</span>
-          <button className="drawer-close-btn" onClick={onClose}>← Roadmap</button>
+          {activeTopic ? (
+            <button className="drawer-close-btn" onClick={() => setActiveTopic(null)}>← Back</button>
+          ) : (
+            <button className="drawer-close-btn" onClick={onClose}>← Roadmap</button>
+          )}
         </div>
-
-        {activeTopic && (
-          <TopicDrawer
-            topic={activeTopic}
-            sectionTitle={section.title}
-            sectionBadge={section.badge}
-            topicContent={topicContent}
-            onClose={() => setActiveTopic(null)}
-          />
-        )}
       </aside>
     </>
   );
