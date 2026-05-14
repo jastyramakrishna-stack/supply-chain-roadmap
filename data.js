@@ -105,7 +105,79 @@ What gets measured gets managed — the right KPI set aligns the entire supply c
     badge: "Core",
     content: {
       overview: `## What is it?\nCore planning processes are structured frameworks aligning supply with demand — from high-level S&OP down to day-to-day MRP execution.\n\n## Why it matters\nWithout structured planning, businesses react to problems instead of preventing them.\n\n## Key Concepts\n- S&OP: monthly demand/supply balance\n- IBP: S&OP plus financial reconciliation\n- MRP: what to make, buy, and when\n- MPS: detailed production schedule\n\n## Key Metrics / KPIs\n- Forecast Accuracy\n- Plan Attainment %\n- Inventory vs Target DOS\n- Capacity Utilisation %`,
-      topics: {}
+      topics: {
+        "Plan → Source → Make → Deliver → Return": `## What is it?
+The SCOR model defines five universal supply chain processes — Plan, Source, Make, Deliver, Return — providing a standard framework for describing, benchmarking, and improving any supply chain.
+
+## Why it matters
+Cisco used SCOR to redesign their supply chain after a $2.2B inventory write-down, cutting supply chain costs by $500M annually and improving OTIF from 70% to 95%.
+
+## Key takeaway
+SCOR gives every team a common language — turning vague improvement ambitions into specific, measurable process changes.`,
+
+        "Sales & Operations Planning (S&OP)": `## What is it?
+S&OP is a monthly business planning process balancing demand, supply, inventory, and financial plans — producing one agreed operational plan that drives all decisions across the business.
+
+## Why it matters
+Unilever runs S&OP across 190 countries, resolving supply gaps 8 weeks before they become customer service failures and avoiding £200M+ of annual disruption cost.
+
+## Key takeaway
+S&OP replaces reactive firefighting with proactive decision-making — it is the heartbeat of a well-run supply chain.`,
+
+        "Integrated Business Planning (IBP)": `## What is it?
+IBP extends S&OP by fully integrating financial planning, strategic initiatives, and portfolio management — connecting the supply plan directly to the P&L and balance sheet.
+
+## Why it matters
+GSK implemented IBP across 47 manufacturing sites, reducing working capital by £400M and improving forecast accuracy from 60% to 85% MAPE.
+
+## Key takeaway
+IBP elevates supply chain planning from an operational activity to a strategic business process that drives financial performance.`,
+
+        "Master Production Scheduling (MPS)": `## What is it?
+The MPS specifies exactly what to produce, in what quantities, and when — translating the S&OP into a feasible production programme that respects capacity and material constraints.
+
+## Why it matters
+Boeing's MPS for the 737 MAX coordinates 367 major suppliers and 600,000+ parts — today's schedule drives purchase orders for components assembled six months later.
+
+## Key takeaway
+The MPS is the bridge between commercial ambition and manufacturing reality — without it, customer commitments are made without checking if they can be kept.`,
+
+        "Material Requirements Planning (MRP)": `## What is it?
+MRP calculates what materials are needed, in what quantities, and when — by exploding the production schedule through the Bill of Materials and netting off current inventory and open orders.
+
+## Why it matters
+Toyota's MRP system is so precise that components arrive at the assembly line within a 2-hour window of when they're needed — eliminating on-site warehousing and saving billions in inventory costs.
+
+## Key takeaway
+MRP is the engine that translates a sales plan into purchase orders — without it, procurement and production run on guesswork.`,
+
+        "Capacity Planning": `## What is it?
+Capacity planning ensures that manufacturing, warehousing, and logistics resources are sufficient to meet the production plan — identifying bottlenecks before they cause missed deliveries.
+
+## Why it matters
+During the 2021 chip shortage, TSMC's capacity allocation decisions determined which entire industries could build products — making their capacity plan one of the most consequential in global supply chain history.
+
+## Key takeaway
+Capacity planning is the reality check of supply chain — where optimistic sales plans meet the hard constraints of machines, people, and time.`,
+
+        "Order Management & Fulfillment": `## What is it?
+Order management covers the end-to-end process from receiving a customer order to delivery — including order capture, stock allocation, picking, packing, shipping, and tracking.
+
+## Why it matters
+Amazon processes 1.6M+ orders per day with 99.9%+ accuracy, automatically selecting the optimal fulfilment centre, carrier, and route for each order while guaranteeing Prime delivery windows.
+
+## Key takeaway
+Order management is where supply chain performance becomes visible to the customer — every failure directly impacts satisfaction and loyalty.`,
+
+        "Supplier Relationship Management": `## What is it?
+SRM is the systematic approach to segmenting, evaluating, developing, and managing suppliers — going beyond transactional purchasing to strategic partnership with key supply base members.
+
+## Why it matters
+Apple's SRM team works with TSMC 3–5 years ahead of product launches, pre-paying billions in capacity and co-investing in equipment — creating a relationship so deep TSMC prioritises Apple above all others.
+
+## Key takeaway
+The best supply chains treat key suppliers as an extension of their own organisation — investing in the relationship creates innovation and resilience that pure transactional buying never can.`
+      }
     },
     items: [
       "Plan → Source → Make → Deliver → Return",
@@ -124,7 +196,79 @@ What gets measured gets managed — the right KPI set aligns the entire supply c
     badge: "Analytical",
     content: {
       overview: `## What is it?\nDemand forecasting estimates future customer demand using historical data, statistical methods, and market intelligence.\n\n## Why it matters\nAccurate forecasts reduce excess inventory, prevent stockouts, and improve customer service.\n\n## Key Concepts\n- Qualitative: expert judgment and market research\n- Quantitative: statistical models from historical data\n- MAPE: Mean Absolute Percentage Error\n- Bias: systematic over or under-forecasting\n\n## Key Metrics / KPIs\n- MAPE\n- Forecast Bias\n- WAPE\n- Forecast Value Added (FVA)`,
-      topics: {}
+      topics: {
+        "Qualitative Forecasting (Judgmental, Delphi)": `## What is it?
+Qualitative forecasting uses expert judgment, market research, and structured consensus methods (like Delphi) to predict demand when historical data is limited or unreliable — essential for new products and disrupted markets.
+
+## Why it matters
+When Apple launched the original iPhone in 2007, there was no historical data — Steve Jobs used expert judgment to target 10 million units in year one, validating the qualitative approach for genuinely novel products.
+
+## Key takeaway
+Qualitative methods are not inferior to statistical ones — for new products or market disruptions, expert judgment is often the only viable forecasting approach.`,
+
+        "Time Series Forecasting": `## What is it?
+Time series forecasting uses patterns in historical demand — trend, seasonality, and cyclicality — to project future values, assuming the past is a reliable guide to the future.
+
+## Why it matters
+Coca-Cola uses time series to predict consistent 30–40% summer volume uplifts, setting production targets 12 weeks in advance and eliminating both seasonal shortages and post-summer overstock.
+
+## Key takeaway
+Time series forecasting works best when history repeats — stable products with clear seasonal patterns are the ideal candidates.`,
+
+        "Causal Forecasting": `## What is it?
+Causal forecasting predicts demand by modelling its relationship with external drivers — price, promotions, weather, and economic indicators — quantifying exactly how each factor moves volume.
+
+## Why it matters
+Heineken's causal model shows a 1°C temperature increase drives +2.3% beer demand and a 10% promotional price cut drives +18% volume — enabling precise production planning around weather and events.
+
+## Key takeaway
+Causal forecasting turns external market intelligence into quantified planning inputs — the bridge between qualitative knowledge and planning system requirements.`,
+
+        "Short-Term vs Long-Term Forecasting": `## What is it?
+Short-term forecasts (days to weeks) drive operational decisions like replenishment and production scheduling, while long-term forecasts (months to years) inform strategic decisions like capacity investment and network design.
+
+## Why it matters
+Airbus forecasts aircraft demand 20 years ahead to justify billion-dollar factory investments, while managing 6-month rolling production schedules for current orders — two entirely different forecasting disciplines running in parallel.
+
+## Key takeaway
+Match your method to your decision horizon — long-term strategic forecasts used for short-term operational decisions are one of the most common and costly planning errors.`,
+
+        "Forecast Accuracy Metrics (MAPE, WAPE, Bias)": `## What is it?
+Forecast accuracy metrics — MAPE, WAPE, and Bias — measure how close demand predictions are to actual demand, providing the feedback loop needed to improve forecasting and identify systematic errors.
+
+## Why it matters
+A CPG company found sales team overrides worsened forecast accuracy by 8% MAPE, adding £4M of excess stock annually — only revealed when FVA (Forecast Value Added) analysis was applied to measure the impact of manual adjustments.
+
+## Key takeaway
+MAPE without bias is incomplete — a forecast can look accurate on average but consistently over-predict, invisibly inflating inventory across the entire network.`,
+
+        "Forecast Error Analysis": `## What is it?
+Forecast error analysis systematically investigates why forecasts deviate from actual demand — decomposing errors by product, customer, and time period to identify fixable root causes versus irreducible random noise.
+
+## Why it matters
+Unilever's tracking signal dashboard automatically escalates any SKU where cumulative error exceeds ±4 for two consecutive months — catching model drift before it creates stock imbalances across 50,000 SKUs.
+
+## Key takeaway
+The value of error analysis is not measuring failure — it's identifying systematic, fixable errors that once corrected permanently improve accuracy across thousands of SKUs.`,
+
+        "Seasonality & Trend Identification": `## What is it?
+Seasonality quantifies regular, predictable demand fluctuations within a year (e.g. Christmas, summer peaks), while trend captures the long-run growth or decline direction — both must be modelled to forecast accurately.
+
+## Why it matters
+Cadbury's Easter egg seasonality index reaches 8.2× average weekly demand in March/April, driving a January–February production run that builds 6 months of seasonal stock without post-Easter write-offs worth millions.
+
+## Key takeaway
+Failing to model seasonality correctly creates systematic stockouts at peak and costly overstock off-peak — the same preventable mistake repeated every single year.`,
+
+        "Demand Segmentation (ABC/XYZ)": `## What is it?
+ABC/XYZ classifies products by revenue contribution (A=top 80%, B=next 15%, C=bottom 5%) and demand variability (X=stable, Y=variable, Z=erratic) — enabling differentiated forecasting and inventory strategies per segment.
+
+## Why it matters
+A grocery retailer with 50,000 SKUs found that focusing forecasting effort on just 200 AX items (0.4% of the range) improved overall service level by 3% while reducing total inventory by £8M.
+
+## Key takeaway
+Not all SKUs deserve equal planning attention — ABC/XYZ tells you exactly where to invest your time, models, and safety stock budget for maximum return.`
+      }
     },
     items: [
       "Qualitative Forecasting (Judgmental, Delphi)",
