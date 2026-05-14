@@ -1065,3 +1065,26 @@ input[type="text"]::placeholder {
   background: rgba(0,0,0,0.06);
   color: #0f172a;
 }
+
+
+/* ── View counter ───────────────────────────────────────────── */
+.view-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.view-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.view-badge {
+  height: 20px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
