@@ -4,35 +4,51 @@
   <meta charset="UTF-8" />
   <title>Supply Chain Roadmap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Font preconnects for performance -->
+
+  <!-- Preconnect to Google Fonts so the CSS @import resolves faster -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Unsplash image preload for hero (fastest perceived load) -->
+
+  <!-- Preload hero image to prevent flash on load -->
   <link rel="preload" as="image"
     href="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=75&auto=format" />
+
   <link rel="stylesheet" href="./styles.css" />
+
   <!-- React & Babel CDN -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+
   <header class="header">
     <div class="container">
       <h1>Supply Chain Roadmap</h1>
       <p class="subtitle">A structured path to master modern supply chain management</p>
-      <p class="subtitle-author"> Crafted by Jasty Rama Krishna </p>
     </div>
   </header>
+
   <main class="container">
     <div id="root"></div>
   </main>
+
   <footer class="footer">
     <div class="container">
       <p>Built with ❤️ for supply chain professionals</p>
+      <div class="view-counter">
+        <span class="view-label">👁 Page Views</span>
+        <img
+          src="https://hits.sh/jastyramakrishna-stack.github.io/supply-chain-roadmap.svg?style=flat-square&color=d97706&label=Views&labelColor=0d1420"
+          alt="Page view counter"
+          class="view-badge"
+        />
+      </div>
     </div>
   </footer>
+
   <script src="./data.js"></script>
   <script type="text/babel" src="./app.jsx"></script>
+
 </body>
 </html>
