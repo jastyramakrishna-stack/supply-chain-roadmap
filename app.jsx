@@ -220,7 +220,7 @@ function RoadmapSection({ section, index, onOpen }) {
   const bannerSrc = SECTION_IMAGES[index] || SECTION_IMAGES[0];
   return (
     <div
-      className={`section-card card-light ${theme.cardTheme}`}
+      className={`section-card ${theme.cardTheme}`}
       style={{ "--card-accent": theme.accent, "--card-bg-color": "" }}
       onClick={() => onOpen(section)}
       role="button"
