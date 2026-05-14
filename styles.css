@@ -478,6 +478,7 @@ input[type="text"]::placeholder {
 .section-card:nth-child(8)  { animation-delay: 0.40s; }
 .section-card:nth-child(9)  { animation-delay: 0.45s; }
 .section-card:nth-child(10) { animation-delay: 0.50s; }
+.section-card:nth-child(n+11) { animation-delay: 0.50s; }
 
 /* ── Scrollbar (Webkit) ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
