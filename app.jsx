@@ -67,7 +67,7 @@ const SECTION_IMAGES = [
   "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=200&fit=crop&q=70&auto=format", // Core Planning — operations floor
   "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Fundamentals — data
   "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Models — forecast trend chart ✓
-  "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Parameters — tech inputs
+  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=200&fit=crop&q=70&auto=format", // Forecasting Parameters — warehouse stock counting
   "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=200&fit=crop&q=70&auto=format", // Replenishment — warehouse shelves
   "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=200&fit=crop&q=70&auto=format", // Tools & Systems — tech workspace ✓
   "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=200&fit=crop&q=70&auto=format", // Analytics & Optimization — math optimization
