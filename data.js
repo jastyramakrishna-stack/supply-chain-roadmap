@@ -85,7 +85,7 @@ Walmart penalises suppliers 3% of invoice value for missing 98.5% OTIF — makin
 
 ## Key takeaway
 What gets measured gets managed — the right KPI set aligns the entire supply chain organisation around the outcomes that matter to the business and its customers.`
-      }      }
+      }
     },
     items: [
       "What is Supply Chain Management",
