@@ -78,7 +78,7 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    url('https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1400&q=85&auto=format');
+    url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1400&q=85&auto=format');
   background-size: cover;
   background-position: center 40%;
   filter: brightness(0.72) saturate(1.0);
@@ -130,7 +130,7 @@ body {
 .header h1::after {
   content: '';
   display: block;
-  width: 3rem;
+  width: 10rem;
   height: 3px;
   background: var(--amber);
   margin: 0.9rem auto 0;
@@ -1102,18 +1102,19 @@ input[type="text"]::placeholder {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #f97316;
-  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #ffffff;
+  background: #0a66c2;
+  border: 1px solid #0a66c2;
   border-radius: 3px;
   text-decoration: none;
   vertical-align: middle;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .author-linkedin:hover {
-  background: rgba(249, 115, 22, 0.12);
-  border-color: #f97316;
-  color: #fb923c;
+  background: #004182;
+  border-color: #004182;
+  color: #ffffff;
 }
 
 .author-linkedin svg {
