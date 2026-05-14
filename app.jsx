@@ -276,7 +276,8 @@ function App() {
       <div className="meta">
         <p>
           Covers foundations → planning → forecasting → replenishment → systems → analytics → modern SC.
-          <span className="meta-hint"> Click any section to explore. Click a topic pill for a deep-dive with examples.</span>
+          <br />
+          <span className="meta-hint">Click any section to explore. Click a topic pill for a deep-dive with examples.</span>
         </p>
       </div>
 
