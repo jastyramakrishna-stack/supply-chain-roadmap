@@ -5,24 +5,87 @@ const roadmapData = [
     content: {
       overview: `## What is it?\nSupply Chain Management (SCM) coordinates all activities involved in sourcing, procurement, production, and delivery of products — from raw materials to the end customer.\n\n## Why it matters\nA well-managed supply chain reduces costs, improves service levels, and creates competitive advantage. Companies like Amazon and Walmart have built entire business models around supply chain excellence.\n\n## Key Concepts\n- Material flow: physical movement of goods from supplier to customer\n- Information flow: orders, forecasts, and tracking data\n- Financial flow: payments, credit terms, and invoices\n- Bullwhip Effect: small demand changes amplified upstream\n- OTIF: On Time In Full — the gold standard KPI\n\n## Key Metrics / KPIs\n- Perfect Order Rate\n- Cash-to-Cash Cycle Time\n- OTIF (On Time In Full)\n- Inventory Turnover`,
       topics: {
-        "What is Supply Chain Management": `## What is it?\nSCM coordinates the flow of goods, services, information, and money from raw material suppliers through manufacturers, distributors, and retailers to the end consumer.\n\n## How it works\nEvery product you buy has passed through a supply chain. A smartphone involves 200+ suppliers across 40+ countries. SCM ensures all these moving parts are synchronised efficiently and cost-effectively.\n\n## Key Concepts\n- Upstream: suppliers and raw materials\n- Downstream: distributors and end customers\n- Tier 1/2/3 suppliers: direct and indirect supply base\n- Push vs Pull: make-to-stock vs make-to-order\n- Five flows: material, information, financial, risk, relationship\n\n## Real-World Example\nApple coordinates 200+ suppliers across 43 countries, shipping 200M+ iPhones annually. Their tight supplier management and demand forecasting keeps inventory lean while meeting global launch-day demand simultaneously across 60+ countries.\n\n## Key Takeaway\nA great product with a poor supply chain will always lose to a good product with a great supply chain.`,
+        "What is Supply Chain Management": `## What is it?
+SCM coordinates the flow of goods, information, and money from raw materials to the end customer across a network of suppliers, manufacturers, and distributors.
 
-        "Logistics & Distribution Basics": `## What is it?\nLogistics is the process of planning, implementing, and controlling the efficient movement and storage of goods from point of origin to point of consumption.\n\n## How it works\nLogistics covers inbound (raw materials to factory) and outbound (finished goods to customer) flows. Distribution networks determine how goods move from warehouses to end customers through various channels and modes.\n\n## Key Concepts\n- 3PL: Third-Party Logistics — outsourced logistics providers\n- Last mile: the final delivery leg to the customer — most expensive\n- Cross-docking: direct transfer from inbound to outbound without storage\n- Hub and spoke: central hub distributes to regional spokes\n- Distribution centre vs warehouse: flow-through vs storage operation\n\n## Real-World Example\nDHL operates in 220+ countries with 400,000 employees and 30,000 vehicles. Their hub-and-spoke model routes 1.6 billion shipments annually through 450+ air hubs — making them the world's most connected logistics network.\n\n## Key Takeaway\nLogistics is the last touchpoint with the customer — poor last-mile delivery destroys brand reputation regardless of how good the product is.`,
+## Why it matters
+A well-run supply chain reduces costs, improves availability, and creates competitive advantage — Amazon and Walmart have built entire business models around supply chain excellence.
 
-        "Procurement & Sourcing Fundamentals": `## What is it?\nProcurement is the process of finding, agreeing terms, and acquiring goods and services needed by the organisation. Sourcing is the strategic identification and selection of suppliers.\n\n## How it works\nProcurement follows a cycle: identify need → market analysis → supplier selection → negotiation → contracting → ordering → receiving → payment. Strategic sourcing adds category management and long-term supplier development.\n\n## Key Concepts\n- Category management: grouping spend by type for strategic leverage\n- TCO: Total Cost of Ownership — price plus all associated costs\n- RFQ/RFP: Request for Quotation / Proposal — formal supplier bids\n- Preferred supplier list: pre-approved vendors for faster procurement\n- Maverick spend: purchasing outside approved contracts — destroys savings\n\n## Real-World Example\nNestle spends $15B+ annually on direct materials. Their global procurement team uses category strategies across 12 commodity groups — cocoa, dairy, packaging — achieving 3-5% cost savings annually through volume leverage and supplier partnerships.\n\n## Key Takeaway\nProcurement is not just about buying cheaply — it's about securing supply, managing risk, and building supplier relationships that create long-term competitive advantage.`,
+## Key takeaway
+A great product with a poor supply chain will always lose to a good product with a great one.`,
 
-        "Inventory Management Essentials": `## What is it?\nInventory management is the process of ordering, storing, and controlling stock to ensure the right quantity of the right product is available at the right time and place.\n\n## How it works\nInventory sits at every node — raw materials, WIP, finished goods. Managing it involves balancing the cost of holding stock (capital, storage, obsolescence) against the cost of running out (lost sales, emergency freight).\n\n## Key Concepts\n- Cycle stock: average inventory from regular replenishment (order qty ÷ 2)\n- Safety stock: buffer against demand and supply variability\n- Dead stock: unsellable inventory — pure write-off risk\n- ABC analysis: classify items by value to prioritise management effort\n- FIFO / FEFO: First In First Out / First Expired First Out rotation rules\n\n## Real-World Example\nZara holds just 6 days of finished goods inventory vs the industry average of 52 days. By producing small batches and replenishing stores twice weekly based on actual sales, they avoid markdowns and achieve 85%+ full-price sell-through.\n\n## Key Takeaway\nInventory is the most visible symptom of supply chain health — too much means poor planning, too little means poor execution.`,
+        "Logistics & Distribution Basics": `## What is it?
+Logistics covers the planning, movement, and storage of goods — inbound from suppliers, internally between sites, and outbound to customers — through a network of distribution centres and transport links.
 
-        "Demand Planning Basics": `## What is it?\nDemand planning forecasts customer demand to ensure products are available when and where needed — the starting point of every supply chain plan and the foundation of everything downstream.\n\n## How it works\nPlanners analyse historical sales, market intelligence, promotions, and seasonality to build a statistical baseline forecast. This is reviewed with commercial teams to incorporate market knowledge before being used to drive replenishment and production.\n\n## Key Concepts\n- Baseline forecast: statistical prediction from historical demand data\n- Uplift: additional demand from promotions, new listings, price changes\n- Consensus forecast: agreed single number after commercial review\n- Demand sensing: using real-time POS data to update short-horizon forecasts\n- Unconstrained demand: what customers want — before supply limits apply\n\n## Real-World Example\nP&G uses AI-powered demand sensing ingesting POS data from 500,000+ retail locations daily. This updates their 1-4 week forecast in real time, reducing short-term forecast error by 20% and preventing both stockouts and overproduction simultaneously.\n\n## Key Takeaway\nEverything in supply chain starts with the demand plan — an inaccurate forecast creates a cascade of wrong decisions across procurement, production, and logistics.`,
+## Why it matters
+Logistics typically represents 5–15% of a product's total cost, making it one of the highest-leverage levers for both profitability and customer service.
 
-        "Replenishment Planning Basics": `## What is it?\nReplenishment planning determines when to order and how much to order to maintain optimal stock levels — translating the demand plan into purchase orders and production instructions.\n\n## How it works\nWhen inventory falls to the Reorder Point, a replenishment order is triggered. The order quantity is calculated based on demand rate, lead time, and service level targets. In modern ERP systems, this process is fully automated.\n\n## Key Concepts\n- Reorder Point (ROP): stock level that triggers a new order\n- Order quantity: EOQ, fixed quantity, or min-max boundaries\n- Lead time: time from order placement to receipt at warehouse\n- Review period: how often inventory levels are checked\n- Continuous vs periodic review: real-time vs scheduled replenishment check\n\n## Real-World Example\nAmazon's automated replenishment processes 400M+ SKU-location combinations daily, triggering purchase orders to 300,000+ suppliers without human intervention — maintaining 99.9% in-stock rates on Prime items across 1M+ products.\n\n## Key Takeaway\nGood replenishment is invisible — products always available without excess stock. Poor replenishment is very visible — empty shelves or overflowing warehouses.`,
+## Key takeaway
+Without reliable logistics, every upstream plan — sourcing, production, forecasting — ultimately fails at the point of customer delivery.`,
 
-        "Warehouse Operations Overview": `## What is it?\nWarehouse operations cover all activities involved in receiving, storing, picking, packing, and shipping goods — the physical execution hub where supply chain planning becomes customer reality.\n\n## How it works\nGoods arrive (inbound), are checked and put away in optimal locations (storage), then picked and packed when customer orders arrive (outbound). A WMS directs all activities to maximise efficiency and inventory accuracy.\n\n## Key Concepts\n- Slotting: placing fast-moving items closest to dispatch to minimise travel\n- Pick path optimisation: minimising picker travel time per order\n- Goods-to-person: automated systems bring items to stationary pickers\n- RFID / barcode scanning: real-time inventory tracking at item level\n- Cycle counting: continuous partial inventory counts vs disruptive annual stocktake\n\n## Real-World Example\nAmazon uses 750,000+ Kiva robots to bring shelves to human pickers — reducing picker travel time by 75%, increasing storage density by 50%, and enabling 24/7 operation processing 1.6M+ orders daily with 99.9% accuracy.\n\n## Key Takeaway\nWarehouse efficiency directly impacts customer experience — order accuracy, delivery speed, and fulfilment cost are all determined by how well the warehouse operation is designed and run.`,
+        "Procurement & Sourcing Fundamentals": `## What is it?
+Procurement is the process of buying goods and services from external suppliers; sourcing is the strategic discipline of identifying, evaluating, and selecting the right suppliers for long-term value.
 
-        "Transportation Modes & Networks": `## What is it?\nTransportation modes are the methods of moving goods — road, rail, air, ocean, and pipeline. Network design determines which modes to use between which nodes to optimise cost, speed, and carbon footprint.\n\n## How it works\nMode selection depends on distance, urgency, volume, and cost. Ocean freight is cheapest for long distances but slowest (25-35 days Asia-Europe). Air freight is fastest but 5-10x more expensive. Road is most flexible for last-mile delivery.\n\n## Key Concepts\n- Intermodal: combining modes in one shipment (ship + rail + truck)\n- FTL vs LTL: Full Truck Load vs Less Than Truck Load\n- Freight forwarder: agent managing international shipping complexity\n- Incoterms: international rules defining who pays freight and bears risk\n- Carbon: air = 50x more CO2 than ocean per tonne-km — mode choice is a sustainability decision\n\n## Real-World Example\nIKEA ships 70% of goods by ocean freight, designing flat-pack furniture to maximise container utilisation (5x more items per container than assembled). This reduces their logistics cost to under 5% of product price — a structural cost advantage over competitors shipping assembled furniture.\n\n## Key Takeaway\nMode selection is a cost-service-sustainability trade-off — the cheapest mode that meets the delivery promise and emissions targets is always the right choice.`,
+## Why it matters
+Procurement spend typically represents 40–80% of a company's revenue, making supplier selection and negotiation one of the most impactful financial levers in any business.
 
-        "Supply Chain KPIs (OTIF, Fill Rate, Inventory Turns)": `## What is it?\nKPIs are measurable values tracking how effectively a supply chain achieves its objectives across service, cost, cash, and quality dimensions — the scoreboard of supply chain performance.\n\n## How it works\nKPIs are tracked weekly or monthly against targets and industry benchmarks. When a KPI misses target it triggers root cause analysis and corrective action plans. Leading KPIs predict future performance; lagging KPIs measure what already happened.\n\n## Key Concepts\n- OTIF: % of orders delivered On Time and In Full — the customer service KPI\n- Fill Rate: % of demand fulfilled immediately from available stock\n- Inventory Turns: Cost of Goods Sold ÷ Average Inventory Value\n- Perfect Order Rate: % of orders with zero errors — on time, in full, damage-free, correct invoice\n- Cash-to-Cash Cycle: days from paying suppliers to receiving customer payment\n\n## Real-World Example\nWalmart demands 98%+ OTIF from all suppliers, with 3% invoice penalties for misses. For a £10M annual supplier, a 1% OTIF shortfall costs £30,000 in direct penalties — making supply chain performance a board-level commercial issue, not just an operational metric.\n\n## Key Takeaway\nWhat gets measured gets managed — the right KPIs align the entire supply chain toward customer service and cost efficiency simultaneously, and make performance everyone's shared responsibility.`
-      }
+## Key takeaway
+The best procurement teams don't just negotiate the lowest price — they secure the right quality, reliability, and innovation from partners who help the business win.`,
+
+        "Inventory Management Essentials": `## What is it?
+Inventory management controls what stock to hold, how much, and where — balancing the cost of holding excess stock against the risk of running out and losing sales.
+
+## Why it matters
+Inventory directly ties up working capital — every unit on the shelf is cash that could be deployed elsewhere, making optimisation a direct lever on both profit and cash flow.
+
+## Key takeaway
+Zara holds just 6–8 days of stock vs the industry average of 52+ days — proof that inventory management is a source of competitive advantage, not just an operational necessity.`,
+
+        "Demand Planning Basics": `## What is it?
+Demand planning uses historical data, market intelligence, and commercial inputs to forecast future customer demand — the starting point for every supply, production, and inventory decision.
+
+## Why it matters
+A 10% improvement in forecast accuracy typically delivers 5–15% reduction in inventory and 2–3% improvement in service levels — directly impacting working capital and customer satisfaction.
+
+## Key takeaway
+Every supply chain decision downstream — what to make, buy, stock, and ship — is only as good as the demand forecast it's built on.`,
+
+        "Replenishment Planning Basics": `## What is it?
+Replenishment planning determines when to order more stock and how much to order — triggering purchase orders automatically when inventory falls to a calculated reorder point.
+
+## Why it matters
+Poor replenishment is the root cause of both stockouts (lost revenue) and overstock (wasted capital) — the two most costly inventory failures in any supply chain.
+
+## Key takeaway
+P&G's VMI programme with Walmart reduced Walmart's inventory by 30% while improving P&G's forecast accuracy by 40% — showing that smart replenishment benefits both sides of the supply chain.`,
+
+        "Warehouse Operations Overview": `## What is it?
+Warehouse operations cover receiving, put-away, storage, picking, packing, and despatch — the physical engine room that converts supply plans into actual customer deliveries.
+
+## Why it matters
+Pick accuracy, throughput speed, and cost per order are the metrics that directly determine whether customer promises are kept — and whether the operation is profitable at scale.
+
+## Key takeaway
+Amazon's random-storage model combined with 750,000+ robots achieves 1.6M+ orders per day at 99.9% accuracy — proving warehouse design is a strategic, not just operational, decision.`,
+
+        "Transportation Modes & Networks": `## What is it?
+Transportation modes — road, ocean, air, and rail — each offer different trade-offs of cost, speed, capacity, and carbon footprint, and most supply chains use multiple modes across different lanes.
+
+## Why it matters
+Mode selection is one of the biggest cost levers in logistics — switching 10% of shipments from air to ocean can reduce freight cost on those lanes by up to 80%.
+
+## Key takeaway
+IKEA's flat-pack design triples container utilisation versus assembled furniture — turning packaging into a logistics cost reduction and a transport sustainability strategy simultaneously.`,
+
+        "Supply Chain KPIs (OTIF, Fill Rate, Inventory Turns)": `## What is it?
+Supply chain KPIs — OTIF, fill rate, inventory turns, and perfect order rate — are the measurable numbers that track whether the supply chain is delivering on its service, cost, and efficiency commitments.
+
+## Why it matters
+Walmart penalises suppliers 3% of invoice value for missing 98.5% OTIF — making KPI performance a direct P&L issue, not just an operational metric.
+
+## Key takeaway
+What gets measured gets managed — the right KPI set aligns the entire supply chain organisation around the outcomes that matter to the business and its customers.`
+      }      }
     },
     items: [
       "What is Supply Chain Management",
