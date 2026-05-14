@@ -61,14 +61,14 @@ body {
 
 /* ── Author credit ──────────────────────────────────────────── */
 .subtitle-author {
-  font-size: 0.9rem;
-  font-style: normal;
+  font-size: 1.1rem;
+  font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--amber);
-  margin-top: 0.6rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f97316;
+  margin-top: 0.7rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  text-transform: none;
   animation: fadeSlideUp 0.7s 0.3s ease both;
 }
 
@@ -916,14 +916,14 @@ input[type="text"]::placeholder {
 
 /* ── Author credit ──────────────────────────────────────────── */
 .subtitle-author {
-  font-size: 0.9rem;
-  font-style: normal;
+  font-size: 1.1rem;
+  font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--amber);
-  margin-top: 0.6rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f97316;
+  margin-top: 0.7rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  text-transform: none;
   animation: fadeSlideUp 0.7s 0.3s ease both;
 }
 
