@@ -959,22 +959,5 @@ Incoterms are strategic supply chain decisions, not standard contract clauses �
     ]
   },
 
-  {
-    title: "Capstone Projects",
-    badge: "Advanced",
-    content: {
-      overview: `## What is it?\nCapstone projects are hands-on challenges integrating everything learned — building real supply chain solutions for your portfolio.\n\n## Why it matters\nEmployers hire for demonstrated skills — a portfolio of completed projects proves you can apply supply chain concepts to real problems.\n\n## Key Concepts\n- End-to-end thinking: demand through to delivery\n- Data-driven decisions: validate with real datasets\n- Tool proficiency: Python, SQL, Excel, Power BI\n- Storytelling: present findings to non-technical audiences\n\n## Key Metrics / KPIs\n- Project complexity and scope\n- Business impact quantified\n- Tool diversity demonstrated`,
-      topics: {}
-    },
-    items: [
-      "Build a Demand Forecasting Model",
-      "Design a Replenishment Strategy for 100 SKUs",
-      "Optimize a Transportation Network",
-      "Create a Multi-Echelon Inventory Model",
-      "Develop a Supplier Scorecard",
-      "Build a Digital Twin for a Warehouse",
-      "Analyze Cost-to-Serve for a Product Portfolio",
-      "Automate Purchase Order Replenishment"
-    ]
-  }
+
 ];
