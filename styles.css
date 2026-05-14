@@ -964,103 +964,14 @@ input[type="text"]::placeholder {
   pointer-events: none;
 }
 
-/* ── Light card mode — overrides dark defaults ──────────────── */
-.section-card.card-light {
-  color: #1e293b;
-}
-
-.section-card.card-light .section-title {
-  color: #0f172a;
-}
-
-.section-card.card-light .section-items li {
-  color: #334155;
-  border-bottom-color: rgba(0,0,0,0.08);
-}
-
-.section-card.card-light .section-items li::before {
-  color: var(--card-accent, #d97706);
-}
-
-.section-card.card-light:hover .section-items li {
-  color: #0f172a;
-}
-
-.section-card.card-light .section-items li:hover {
-  color: #000 !important;
-}
-
-.section-card.card-light .section-cta {
-  color: var(--card-accent, #d97706);
-}
-
-/* Left accent bar colour in light mode */
-.section-card.card-light::after {
-  background: var(--card-accent, #d97706);
-}
-
-/* Photo layer off — banner replaces it */
-.section-card.card-light::before {
-  display: none;
-}
-
-/* ── Per-badge themed backgrounds & accents ─────────────────── */
-
-/* Start Here — warm cream / logistics */
-.card-theme-start {
-  --card-bg-color: #fdf8f2;
-  --card-accent:   #b45309;
-  background: #fdf8f2 !important;
-}
-.card-theme-start:hover { background: #fef3e2 !important; }
-
-/* Core — cool slate blue / planning */
-.card-theme-core {
-  --card-bg-color: #f0f4ff;
-  --card-accent:   #1d4ed8;
-  background: #f0f4ff !important;
-}
-.card-theme-core:hover { background: #e8effe !important; }
-
-/* Analytical — soft violet / data */
-.card-theme-analytical {
-  --card-bg-color: #f5f0ff;
-  --card-accent:   #6d28d9;
-  background: #f5f0ff !important;
-}
-.card-theme-analytical:hover { background: #ede9fe !important; }
-
-/* Operations — light green / warehouse */
-.card-theme-operations {
-  --card-bg-color: #f0fdf4;
-  --card-accent:   #15803d;
-  background: #f0fdf4 !important;
-}
-.card-theme-operations:hover { background: #dcfce7 !important; }
-
-/* Digital — light teal / tech */
-.card-theme-digital {
-  --card-bg-color: #f0fffe;
-  --card-accent:   #0e7490;
-  background: #f0fffe !important;
-}
-.card-theme-digital:hover { background: #e0f9fa !important; }
-
-/* Advanced — light rose / expert */
-.card-theme-advanced {
-  --card-bg-color: #fff5f5;
-  --card-accent:   #b91c1c;
-  background: #fff5f5 !important;
-}
-.card-theme-advanced:hover { background: #fee2e2 !important; }
-
-/* Data — light cyan / analytics */
-.card-theme-data {
-  --card-bg-color: #f0fbff;
-  --card-accent:   #0369a1;
-  background: #f0fbff !important;
-}
-.card-theme-data:hover { background: #e0f2fe !important; }
+/* Card themes — accent colour only, background stays dark */
+.card-theme-start    { --card-accent: #b45309; }
+.card-theme-core     { --card-accent: #1d4ed8; }
+.card-theme-analytical { --card-accent: #6d28d9; }
+.card-theme-operations { --card-accent: #15803d; }
+.card-theme-digital  { --card-accent: #0e7490; }
+.card-theme-advanced { --card-accent: #b91c1c; }
+.card-theme-data     { --card-accent: #0369a1; }
 
 /* Drawer banners removed — banners are card-only */
 
